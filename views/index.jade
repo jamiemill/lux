@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+  .presentation
+    .slides
+      .slide
+        .slide-content
+          h1 Use the router
+          ul
+            li Make use of the router as much as possible.
+            li Any reasonable 'page-like' state should be navigable/bookmarkable as a route.
+            li Routes can be logged as pageviews to google analytics too.
+      .slide
+        .slide-content
+          h1 Treat the DOM as Read Only
+          ul
+            li Think of it as a canvas that you paint over and over
+            li data in DOM attributes that you read later is probably doing it wrong
+            li e.g. 
+              code data-task-id="123"
+      .slide
+        .slide-content
+          h1 Keep the 'source of truth' for the client-side in data objects, not the DOM.
+          ul
+            li
+              | At any time, you should be able to call 'render()' on a view and re-paint the
+              | DOM, because there's nothing important there.
+
+      .slide
+        .slide-content
+          h1 Code example
+          pre
+            | This is some <p>code</p>
+            | over a few lines

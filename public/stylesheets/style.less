@@ -1,0 +1,62 @@
+@cyan: #01f0ff;
+@darkBlue: #0a2535;
+@pink: #f74085;
+
+body {
+    font: 30px Lato, sans-serif;
+    font-weight: 300;
+    color: fadeout(white, 30%);
+    background-color: @darkBlue;
+    line-height: 1.5em;
+}
+
+a {
+    color: @pink;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h1, h2, h3 {
+    color: @pink;
+    font-weight: 300;
+    line-height: 1.2em;
+    margin: 0 0 0.5em 0;
+}
+
+p, ul, ol {
+    margin: 0 0 0.5em 0;
+}
+
+code, pre {
+    background-color: lighten(@darkBlue, 3%);
+    border: 1px solid lighten(@darkBlue, 5%);
+    padding: 0.1em 0.3em;
+    border-radius: 0.15em;
+    font-family: "Courier New", Courier, fixed-width;
+    font-size: 95%;
+    color: lighten(@cyan, 5%);
+}
+
+.presentation {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    position: relative;
+    // left will be offset to show current slide
+    height: 100%;
+
+    .slide {
+        float: left;
+        height: 100%;
+        .slide-content {
+            padding: 2em;
+        }
+    }
+
+}
+
