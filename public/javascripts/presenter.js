@@ -27,6 +27,7 @@
             this.render();
             var self = this;
             $('body').keyup(function(e) {self.onKeyUp(e);});
+            $(window).resize(function() {self.render();});
         },
 
         render: function() {
