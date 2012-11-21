@@ -4,34 +4,57 @@ block content
 
   .presentation
     .slides
-      .slide
-        .slide-content
-          h1 Use the router
-          ul
-            li Make use of the router as much as possible.
-            li Any reasonable 'page-like' state should be navigable/bookmarkable as a route.
-            li Routes can be logged as pageviews to google analytics too.
-      .slide
-        .slide-content
-          h1 Treat the DOM as Read Only
-          ul
-            li Think of it as a canvas that you paint over and over
-            li data in DOM attributes that you read later is probably doing it wrong
-            li e.g. 
-              code data-task-id="123"
-      .slide
-        .slide-content
-          h1 Keep the 'source of truth' for the client-side in data objects, not the DOM.
-          ul
-            li
-              | At any time, you should be able to call 'render()' on a view and re-paint the
-              | DOM, because there's nothing important there.
 
       .slide
         .slide-content
-          h1 Code example
-          pre(class='prettyprint')
-            | // Here is some javascript
-            | var f = function() {
-            |   console.log('some text');
-            | }
+          h1 Use the router generously
+          ul
+            li Push navigational state up to the URL
+            li Allows:
+              ul
+                li Refreshing without losing location
+                li Bookmarking/sharing location
+                li Back button
+
+      .slide
+        .slide-content
+          h1 Use the router generously
+          pre
+            | var AppRouter = Backbone.Router.extend({
+            |   routes: {
+            |     'competition': 'competition',
+            |     'report/:year/:month': 'report'
+            |   }
+            | });
+          pre
+            | appRouter.navigate('report/2012/11', {trigger: true});
+
+      .slide
+        .slide-content
+          h1 The Source of Truth
+          ul
+            li No ambiguity!
+            li Models should be the source of data truth.
+            li Views should be the source of UI state truth.
+            li The DOM is not a source of truth.
+
+      .slide
+        .slide-content
+          h1 The Source of Truth
+          p Good:
+            pre
+              | myView.currentTab = OPEN_IDEAS;
+              | myView.render();
+          p Bad:
+            pre
+              | <div data-current-tab="open-ideas">...</div>
+
+      .slide
+        .slide-content
+          h1 Treat the DOM as Write-Only
+          ul
+            li Data flows towards the DOM, not back.
+            li Paint and re-paint the DOM like a canvas.
+            li Don't read from it.
+            li Exception: form inputs.
+
