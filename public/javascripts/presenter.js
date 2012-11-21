@@ -31,26 +31,34 @@
         },
 
         render: function() {
-            // Base element should be wide enough to contain all slides
-            this.$baseEl.find('.slides').width(this.getScreenWidth() * this.slideCount);
-            // Each slide is as wide as the screen
-            this.$getSlides().width(this.getScreenWidth());
-            this.scrollToSlide(this.currentSlide, false);
+            this.showSlide(this.currentSlide);
+            // Do this on the next tick to prevent Chrome from animating on initial
+            // pageload.
+            var self = this;
+            setTimeout(function() {self.$baseEl.addClass('states-set');}, 0);
         },
 
-        scrollToSlide: function(number, animate) {
+        showSlide: function(number) {
             this.currentSlide = number;
-            // Whole base canvas should be offset to show only the current slide.
-            var speed = animate ? 500 : 0;
-            var offset = - this.currentSlide * this.getScreenWidth();
-            this.$baseEl.find('.slides').animate({left: offset}, speed);
+            this.updateSlideStates();
+        },
+
+        updateSlideStates: function() {
+            var self = this;
+            this.$getSlides().each(function(i) {
+                $(this).toggleClass('past', i < self.currentSlide);
+                $(this).toggleClass('current', i === self.currentSlide);
+                $(this).toggleClass('future', i > self.currentSlide);
+            });
         },
 
         onKeyUp: function(e) {
             if (e.keyCode === KEY_LEFT) {
+                e.preventDefault();
                 this.previous();
                 return false;
             } else if (e.keyCode === KEY_RIGHT) {
+                e.preventDefault();
                 this.next();
                 return false;
             }
@@ -69,7 +77,7 @@
             if (toSlide > this.slideCount-1 || toSlide < 0) {
                 return;
             }
-            this.scrollToSlide(toSlide, true);
+            this.showSlide(toSlide);
         },
 
         $getSlides: function() {
