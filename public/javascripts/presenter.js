@@ -7,6 +7,7 @@
 
     $(document).ready(function() {
         window.mainPresentation = new Presenter({baseEl: $('.presentation')});
+        prettyPrint();
     });
 
     // The actual Presenter class
