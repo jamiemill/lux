@@ -25,10 +25,15 @@
 
         init: function() {
             this.slideCount = this.$getSlides().length;
+            var slideFromURL = jQuery.bbq.getState('slide', true);
+            if (slideFromURL) {
+                this.currentSlide = slideFromURL - 1;
+            }
             this.render();
             var self = this;
             $('body').keyup(function(e) {self.onKeyUp(e);});
             $(window).resize(function() {self.render();});
+            $(window).bind('hashchange', function() {self.onHashChange();});
         },
 
         render: function() {
@@ -41,6 +46,7 @@
 
         showSlide: function(number) {
             this.currentSlide = number;
+            jQuery.bbq.pushState({slide: number + 1});
             this.updateSlideStates();
         },
 
@@ -64,6 +70,13 @@
                 return false;
             }
             return true;
+        },
+
+        onHashChange: function() {
+            var slide = jQuery.bbq.getState('slide', true);
+            if (slide) {
+                this.showSlide(slide - 1);
+            }
         },
 
         next: function() {
