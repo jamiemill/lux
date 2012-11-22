@@ -110,8 +110,8 @@ block content
         .slide-content
           h2 Assume views might multiply
           ul
-            li Even if building a menu, assume one day you might want two to exist on the screen at once
-            li Always target elements with the view's scoped jQuery instance at <code>this.$</code> so that maniputations are limited to the instance in question
+            li Assume every view you build will exist multiple times on the same screen
+            li Use each view's scoped jQuery instance at <code>this.$</code> instead of <code>$</code>
             li Avoid giving elements IDs. Use classnames instead so you can have many per page.
 
       .slide
