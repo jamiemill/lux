@@ -7,7 +7,7 @@ block content
 
       .slide
         .slide-content
-          h1 A Few Backbone.js Tips
+          h1 A few Backbone.js tips
           p (Many apply to JavaScript development in general)
 
       .slide
@@ -102,16 +102,16 @@ block content
             li Test them in isolation
             li When composing views:
             ul
-              li Child views should not know about parents
-              li Child views can dispatch events for parents to listen to
-              li Parents know about children and their API, but should have no knowledge of the child's DOM tree
+              li Child views should not know about parents.
+              li Child views can dispatch events for parents to listen to.
+              li Parents know about children and their API, but should have no knowledge of the child's DOM tree.
 
       .slide
         .slide-content
           h2 Assume views might multiply
           ul
-            li Assume every view you build will exist multiple times on the same screen
-            li Use each view's scoped jQuery instance at <code>this.$</code> instead of <code>$</code>
+            li Assume every view you build will exist multiple times on the same screen.
+            li Use scoped selectors through a view's <code>this.$</code> instance instead of the global <code>$</code>.
             li Avoid giving elements IDs. Use classnames instead so you can have many per page.
 
       .slide
