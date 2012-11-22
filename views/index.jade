@@ -7,7 +7,74 @@ block content
 
       .slide
         .slide-content
-          h1 Use the router generously
+          h1 A Few Backbone.js Tips
+          p Which mostly apply to JavaScript development in general.
+
+      .slide
+        .slide-content
+          h2 Don't store data in the DOM
+          ul
+            li Avoid ambiguity of state/data spread between JS and HTML
+            li Data truth &rarr; belongs in model instances.
+            li UI state truth &rarr; belongs in view instances.
+            li The DOM is not a source of truth.
+            li Should be able to re-render views any time without worrying about losing some state from the DOM.
+
+      .slide
+        .slide-content
+          h2 Don't store data in the DOM (Example)
+          p To store which tab a user has activated:
+          p Not so good:
+          pre
+            | <div data-current-tab="open-ideas">...</div>
+          p Better:
+            pre
+              | myView.currentTab = OPEN_IDEAS;
+
+      .slide
+        .slide-content
+          h2 Treat the DOM as write-only
+          ul
+            li Data flows towards the DOM, not back.
+            li Paint and re-paint the DOM like a canvas.
+            li Don't read from it.
+            li (except for user input)
+
+      .slide
+        .slide-content
+          h2 Be declarative
+          ul
+            li Cuts down on boilerplate
+            li Shows intention over implementation
+
+      .slide
+        .slide-content
+          h2 Be declarative (with DOM events)
+          p Not so good:
+            pre
+              | this.$('.load-more').click(this.load_more);
+          p Better:
+            pre
+              | // inside a view class
+              | events: {
+              |   'click .load-more': 'load_more',
+              | }
+
+      .slide
+        .slide-content
+          h2 Be declarative (with templates, where possible)
+          p Not so good:
+            pre
+              | this.$('.some-div').append(some_subtemplate());
+          p Better:
+            pre
+              | <div class="some-div">
+              |   {{> some_handlebars_partial}}
+              | </div>
+
+      .slide
+        .slide-content
+          h2 Use the router generously
           ul
             li Push navigational state up to the URL
             li Allows:
@@ -18,43 +85,12 @@ block content
 
       .slide
         .slide-content
-          h1 Use the router generously
+          h2 Use the router generously
           pre
             | var AppRouter = Backbone.Router.extend({
             |   routes: {
-            |     'competition': 'competition',
             |     'report/:year/:month': 'report'
             |   }
             | });
           pre
             | appRouter.navigate('report/2012/11', {trigger: true});
-
-      .slide
-        .slide-content
-          h1 The Source of Truth
-          ul
-            li No ambiguity!
-            li Models should be the source of data truth.
-            li Views should be the source of UI state truth.
-            li The DOM is not a source of truth.
-
-      .slide
-        .slide-content
-          h1 The Source of Truth
-          p Good:
-            pre
-              | myView.currentTab = OPEN_IDEAS;
-              | myView.render();
-          p Bad:
-            pre
-              | <div data-current-tab="open-ideas">...</div>
-
-      .slide
-        .slide-content
-          h1 Treat the DOM as Write-Only
-          ul
-            li Data flows towards the DOM, not back.
-            li Paint and re-paint the DOM like a canvas.
-            li Don't read from it.
-            li Exception: form inputs.
-
