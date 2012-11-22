@@ -8,7 +8,7 @@ block content
       .slide
         .slide-content
           h1 A Few Backbone.js Tips
-          p Which mostly apply to JavaScript development in general.
+          p (Many apply to JavaScript development in general)
 
       .slide
         .slide-content
@@ -94,3 +94,26 @@ block content
             | });
           pre
             | appRouter.navigate('report/2012/11', {trigger: true});
+
+      .slide
+        .slide-content
+          h2 Make views independent
+          ul
+            li Test them in isolation
+            li When composing views:
+            ul
+              li Child views should not know about parents
+              li Child views can dispatch events for parents to listen to
+              li Parents know about children and their API, but should have no knowledge of the child's DOM tree
+
+      .slide
+        .slide-content
+          h2 Assume views might multiply
+          ul
+            li Even if building a menu, assume one day you might want two to exist on the screen at once
+            li Always target elements with the view's scoped jQuery instance at <code>this.$</code> so that maniputations are limited to the instance in question
+            li Avoid giving elements IDs. Use classnames instead so you can have many per page.
+
+      .slide
+        .slide-content
+          h1 THE END
