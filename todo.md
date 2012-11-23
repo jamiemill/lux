@@ -1,0 +1,7 @@
+- better name
+- license
+- click to advance
+- swipe on ipad
+- remote control
+- nested slides
+- progressive reveal

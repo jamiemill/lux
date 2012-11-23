@@ -97,11 +97,8 @@
 
         $getSlides: function() {
             return this.$baseEl.find('.slide');
-        },
-
-        getScreenWidth: function() {
-            return $(window).width();
         }
+
     });
 
 
