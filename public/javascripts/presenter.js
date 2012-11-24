@@ -84,37 +84,79 @@
             this.swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self.onSwipeMove(e);});
             this.$getCurrentSlide().addClass('dragging');
+            this.$getNextSlide().addClass('dragging');
+            this.$getPreviousSlide().addClass('dragging');
             return false;
         },
 
         onSwipeEnd: function(e) {
             e.preventDefault();
-            this.swipeStartPos = null;
             $('body').unbind('mousemove.presenter');
             this.$getCurrentSlide().removeClass('dragging');
+            this.$getNextSlide().removeClass('dragging');
+            this.$getPreviousSlide().removeClass('dragging');
+            var offset = e.screenX - this.swipeStartPos;
+            var toleranceForFullSwipe = 0.3;
+            if (offset > toleranceForFullSwipe*$(window).width()) {
+                // user achieved full swipe right
+                this.previous();
+            } else if (offset < -toleranceForFullSwipe*$(window).width()) {
+                // user achieved full swipe left
+                this.next();
+            }
+            this.$getSlides().css({
+                '-webkit-transform': '',
+                '-moz-transform': '',
+                '-o-transform': '',
+                'transform': ''
+            });
+            this.swipeStartPos = null;
             return false;
         },
 
         onSwipeMove: function(e) {
             e.preventDefault();
-            console.log(e);
             var offset = e.screenX - this.swipeStartPos;
-            if (offset > 0) {
-                // user is swiping rightwards
-            } else {
-                // user is swiping leftwards
-            }
+            var pctOffset = offset/$(window).width()*100;
+            var nextPctOffset = pctOffset + 100;
+            var previousPctOffset = pctOffset - 100;
             this.$getCurrentSlide().css({
-                '-webkit-transform': 'translate('+offset+'px,0px)',
-                '-moz-transform': 'translate('+offset+'px,0px)',
-                '-o-transform': 'translate('+offset+'px,0px)',
-                'transform': 'translate('+offset+'px,0px)'
+                '-webkit-transform': 'translate('+pctOffset+'%,0px)',
+                '-moz-transform': 'translate('+pctOffset+'%,0px)',
+                '-o-transform': 'translate('+pctOffset+'%,0px)',
+                'transform': 'translate('+pctOffset+'%,0px)'
+            });
+            this.$getNextSlide().css({
+                '-webkit-transform': 'translate('+nextPctOffset+'%,0px)',
+                '-moz-transform': 'translate('+nextPctOffset+'%,0px)',
+                '-o-transform': 'translate('+nextPctOffset+'%,0px)',
+                'transform': 'translate('+nextPctOffset+'%,0px)'
+            });
+            this.$getPreviousSlide().css({
+                '-webkit-transform': 'translate('+previousPctOffset+'%,0px)',
+                '-moz-transform': 'translate('+previousPctOffset+'%,0px)',
+                '-o-transform': 'translate('+previousPctOffset+'%,0px)',
+                'transform': 'translate('+previousPctOffset+'%,0px)'
             });
             return false;
         },
 
         $getCurrentSlide: function() {
             return this.$baseEl.find('.slide:eq('+this.currentSlide+')');
+        },
+
+        $getNextSlide: function() {
+            if (this.currentSlide+1 > this.slideCount-1) {
+                return $([]);
+            }
+            return this.$baseEl.find('.slide:eq('+(this.currentSlide+1)+')');
+        },
+
+        $getPreviousSlide: function() {
+            if (this.currentSlide === 0) {
+                return $([]);
+            }
+            return this.$baseEl.find('.slide:eq('+(this.currentSlide-1)+')');
         },
 
         onHashChange: function() {
