@@ -25,6 +25,8 @@
         slideCount: null,
         currentSlide: 0,
 
+        swipeStartPos: null,
+
         init: function() {
             this.slideCount = this.$getSlides().length;
             var slideFromURL = jQuery.bbq.getState('slide', true);
@@ -34,6 +36,8 @@
             this.render();
             var self = this;
             $('body').keyup(function(e) {self.onKeyUp(e);});
+            $('body').mousedown(function(e) {self.onSwipeStart(e);});
+            $('body').mouseup(function(e) {self.onSwipeEnd(e);});
             $(window).resize(function() {self.render();});
             $(window).bind('hashchange', function() {self.onHashChange();});
         },
@@ -72,6 +76,45 @@
                 return false;
             }
             return true;
+        },
+
+        onSwipeStart: function(e) {
+            var self = this;
+            e.preventDefault();
+            this.swipeStartPos = e.screenX;
+            $('body').bind('mousemove.presenter', function(e) {self.onSwipeMove(e);});
+            this.$getCurrentSlide().addClass('dragging');
+            return false;
+        },
+
+        onSwipeEnd: function(e) {
+            e.preventDefault();
+            this.swipeStartPos = null;
+            $('body').unbind('mousemove.presenter');
+            this.$getCurrentSlide().removeClass('dragging');
+            return false;
+        },
+
+        onSwipeMove: function(e) {
+            e.preventDefault();
+            console.log(e);
+            var offset = e.screenX - this.swipeStartPos;
+            if (offset > 0) {
+                // user is swiping rightwards
+            } else {
+                // user is swiping leftwards
+            }
+            this.$getCurrentSlide().css({
+                '-webkit-transform': 'translate('+offset+'px,0px)',
+                '-moz-transform': 'translate('+offset+'px,0px)',
+                '-o-transform': 'translate('+offset+'px,0px)',
+                'transform': 'translate('+offset+'px,0px)'
+            });
+            return false;
+        },
+
+        $getCurrentSlide: function() {
+            return this.$baseEl.find('.slide:eq('+this.currentSlide+')');
         },
 
         onHashChange: function() {
