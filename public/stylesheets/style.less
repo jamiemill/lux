@@ -49,6 +49,13 @@ code, pre {
     line-height: 1.2em;
 }
 
+.translate(@x, @y) {
+    -webkit-transform: translate(@x, @y);
+    -moz-transform: translate(@x, @y);
+    -o-transform: translate(@x, @y);
+    transform: translate(@x, @y);
+}
+
 .presentation {
     height: 100%;
 
@@ -63,13 +70,12 @@ code, pre {
             overflow: hidden;
             width: 100%;
             &.past {
-                left: -100%;
+                .translate(-100%, 0);
             }
             &.current {
-                left: 0;
             }
             &.future {
-                left: 100%;
+                .translate(100%, 0);
             }
             .slide-content {
                 padding: 2em;
@@ -80,11 +86,11 @@ code, pre {
 
     &.states-set {
         // Only perform transitions when starting classes have been applied
-        .slide {
-            transition: left 500ms;
-            -webkit-transition: left 500ms;
-            -moz-transition: left 500ms;
-            -o-transition: left 500ms;
+        .slide:not(.dragging) {
+            -webkit-transition: -webkit-transform 500ms;
+            -moz-transition: -moz-transform 500ms;
+            -o-transition: -o-transform 500ms;
+            transition: transform 500ms;
         }
     }
 
