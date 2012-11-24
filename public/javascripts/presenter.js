@@ -2,6 +2,7 @@
 
     var KEY_RIGHT = 39;
     var KEY_LEFT = 37;
+    var KEY_SPACE = 32;
 
     // On page load
 
@@ -65,7 +66,7 @@
                 e.preventDefault();
                 this.previous();
                 return false;
-            } else if (e.keyCode === KEY_RIGHT) {
+            } else if (e.keyCode === KEY_RIGHT || e.keyCode === KEY_SPACE) {
                 e.preventDefault();
                 this.next();
                 return false;
