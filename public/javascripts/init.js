@@ -16,4 +16,9 @@ $(document).ready(function() {
         presenter: presenter
     });
 
+    var urlBinder = new UrlBinder({
+        presenter: presenter,
+        baseEl: $('.presentation')
+    });
+
 });
