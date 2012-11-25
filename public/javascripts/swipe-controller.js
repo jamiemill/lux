@@ -18,29 +18,22 @@
             e.preventDefault();
             this._swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self._onSwipeMove(e);});
-            this._presenter._$getSlides().addClass('dragging');
+            this._presenter.swipeStarted();
             return false;
         },
 
         _onSwipeEnd: function(e) {
             e.preventDefault();
             $('body').unbind('mousemove.presenter');
-            this._presenter._$getSlides().removeClass('dragging');
+            this._presenter.swipeStopped();
             var offset = e.screenX - this._swipeStartPos;
             var toleranceForFullSwipe = 0.3;
             if (offset > toleranceForFullSwipe*$(window).width()) {
-                // user achieved full swipe right
                 this._presenter.previous();
             } else if (offset < -toleranceForFullSwipe*$(window).width()) {
-                // user achieved full swipe left
                 this._presenter.next();
             }
-            this._presenter._$getSlides().css({
-                '-webkit-transform': '',
-                '-moz-transform': '',
-                '-o-transform': '',
-                'transform': ''
-            });
+            this._presenter._moveSlides(0);
             this._swipeStartPos = null;
             return false;
         },
