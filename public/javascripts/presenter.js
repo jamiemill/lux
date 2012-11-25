@@ -13,12 +13,6 @@
 
         _init: function() {
             this._slideCount = this._$getSlides().length;
-            this._render();
-            var self = this;
-            $(window).resize(function() {self._render();});
-        },
-
-        _render: function() {
             this.showSlide(this._currentSlide);
             // Do this on the next tick to prevent Chrome from animating on initial
             // pageload.
