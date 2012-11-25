@@ -40,8 +40,8 @@
             });
         },
 
-        _moveSlides: function(pctOffset) {
-            if (pctOffset === 0) {
+        shiftSlides: function(proportion) {
+            if (proportion === 0) {
                 this._$getSlides().css({
                     '-webkit-transform': '',
                     '-moz-transform': '',
@@ -52,7 +52,7 @@
             }
             var self = this;
             $.each([-1,0,1], function(i, n) {
-                var offset = pctOffset + n*100;
+                var offset = proportion*100 + n*100;
                 var setting = 'translate(' + offset + '%, 0px)';
                 self._$getSlideByRelativeIndex(n).css({
                     '-webkit-transform': setting,

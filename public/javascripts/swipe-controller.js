@@ -33,7 +33,7 @@
             } else if (offset < -toleranceForFullSwipe*$(window).width()) {
                 this._presenter.next();
             }
-            this._presenter._moveSlides(0);
+            this._presenter.shiftSlides(0);
             this._swipeStartPos = null;
             return false;
         },
@@ -41,8 +41,8 @@
         _onSwipeMove: function(e) {
             e.preventDefault();
             var offset = e.screenX - this._swipeStartPos;
-            var pctOffset = offset/$(window).width()*100;
-            this._presenter._moveSlides(pctOffset);
+            var proportion = offset/$(window).width();
+            this._presenter.shiftSlides(proportion);
             return false;
         }
 
