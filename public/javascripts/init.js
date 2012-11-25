@@ -1,7 +1,15 @@
 // On page load
 
 $(document).ready(function() {
-    window.mainPresentation = new Presenter({baseEl: $('.presentation')});
     $('code,pre').addClass('prettyprint');
     prettyPrint();
+
+    var presenter = new Presenter({
+        baseEl: $('.presentation')
+    });
+
+    var keyboardController = new KeyboardController({
+        presenter: presenter
+    });
+
 });

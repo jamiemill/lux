@@ -1,9 +1,5 @@
 (function($){
 
-    var KEY_RIGHT = 39;
-    var KEY_LEFT = 37;
-    var KEY_SPACE = 32;
-
     var Presenter = function(options) {
         this._$baseEl = $(options.baseEl);
         this._init();
@@ -24,7 +20,6 @@
             }
             this._render();
             var self = this;
-            $('body').keyup(function(e) {self._onKeyUp(e);});
             $('body').mousedown(function(e) {self._onSwipeStart(e);});
             $('body').mouseup(function(e) {self._onSwipeEnd(e);});
             $(window).resize(function() {self._render();});
@@ -46,19 +41,6 @@
                 $(this).toggleClass('current', i === self._currentSlide);
                 $(this).toggleClass('future', i > self._currentSlide);
             });
-        },
-
-        _onKeyUp: function(e) {
-            if (e.keyCode === KEY_LEFT) {
-                e.preventDefault();
-                this.previous();
-                return false;
-            } else if (e.keyCode === KEY_RIGHT || e.keyCode === KEY_SPACE) {
-                e.preventDefault();
-                this.next();
-                return false;
-            }
-            return true;
         },
 
         _onSwipeStart: function(e) {
