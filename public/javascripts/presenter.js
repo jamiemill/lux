@@ -1,5 +1,16 @@
 (function($){
 
+    /**
+     * This class represents the actual presentation.  It encapsulates the
+     * logic for:
+     * - setting/maintaining the states of all slides.
+     * - showing any given slide.
+     * - transitioning to the next or previous slide.
+     * It can be controlled by a public interface but does not listen for any
+     * global user control.  It's kept as dumb as possible so that there can
+     * potentially be several on a page at once.
+     */
+
     var Presenter = function(options) {
         this._$baseEl = $(options.baseEl);
         this._init();

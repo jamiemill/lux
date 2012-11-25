@@ -1,5 +1,15 @@
 (function($) {
 
+    /**
+     * This class can link a presentation to the URL
+     * and:
+     * - update the URL fragment when the current slide changes
+     * - update the presentation when the URL fragment changes
+     *   (e.g. when user presses back, forward, or changes URL)
+     * - navigates the presentation to the initial slide by checking
+     *   the URL on load.
+     */
+
     var UrlBinder = function(options) {
 
         this._presenter = options.presenter;

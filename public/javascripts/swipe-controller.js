@@ -1,5 +1,11 @@
 (function($) {
 
+    /**
+     * This class controls a presentation with
+     * swipe-like gestures.
+     * TODO: Make it work with touch events instead of mouse.
+     */
+
     var SwipeController = function(options) {
         this._presenter = options.presenter;
         var self = this;
