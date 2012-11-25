@@ -83,18 +83,18 @@
             e.preventDefault();
             this.swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self.onSwipeMove(e);});
-            this.$getCurrentSlide().addClass('dragging');
-            this.$getNextSlide().addClass('dragging');
-            this.$getPreviousSlide().addClass('dragging');
+            this.$getSlideByRelativeIndex(0).addClass('dragging');
+            this.$getSlideByRelativeIndex(1).addClass('dragging');
+            this.$getSlideByRelativeIndex(-1).addClass('dragging');
             return false;
         },
 
         onSwipeEnd: function(e) {
             e.preventDefault();
             $('body').unbind('mousemove.presenter');
-            this.$getCurrentSlide().removeClass('dragging');
-            this.$getNextSlide().removeClass('dragging');
-            this.$getPreviousSlide().removeClass('dragging');
+            this.$getSlideByRelativeIndex(0).removeClass('dragging');
+            this.$getSlideByRelativeIndex(1).removeClass('dragging');
+            this.$getSlideByRelativeIndex(-1).removeClass('dragging');
             var offset = e.screenX - this.swipeStartPos;
             var toleranceForFullSwipe = 0.3;
             if (offset > toleranceForFullSwipe*$(window).width()) {
@@ -120,19 +120,19 @@
             var pctOffset = offset/$(window).width()*100;
             var nextPctOffset = pctOffset + 100;
             var previousPctOffset = pctOffset - 100;
-            this.$getCurrentSlide().css({
+            this.$getSlideByRelativeIndex(0).css({
                 '-webkit-transform': 'translate('+pctOffset+'%,0px)',
                 '-moz-transform': 'translate('+pctOffset+'%,0px)',
                 '-o-transform': 'translate('+pctOffset+'%,0px)',
                 'transform': 'translate('+pctOffset+'%,0px)'
             });
-            this.$getNextSlide().css({
+            this.$getSlideByRelativeIndex(1).css({
                 '-webkit-transform': 'translate('+nextPctOffset+'%,0px)',
                 '-moz-transform': 'translate('+nextPctOffset+'%,0px)',
                 '-o-transform': 'translate('+nextPctOffset+'%,0px)',
                 'transform': 'translate('+nextPctOffset+'%,0px)'
             });
-            this.$getPreviousSlide().css({
+            this.$getSlideByRelativeIndex(-1).css({
                 '-webkit-transform': 'translate('+previousPctOffset+'%,0px)',
                 '-moz-transform': 'translate('+previousPctOffset+'%,0px)',
                 '-o-transform': 'translate('+previousPctOffset+'%,0px)',
@@ -141,22 +141,12 @@
             return false;
         },
 
-        $getCurrentSlide: function() {
-            return this.$baseEl.find('.slide:eq('+this.currentSlide+')');
-        },
-
-        $getNextSlide: function() {
-            if (this.currentSlide+1 > this.slideCount-1) {
+        $getSlideByRelativeIndex: function(delta) {
+            var slide = this.currentSlide + delta;
+            if (slide > this.slideCount-1 || slide < 0) {
                 return $([]);
             }
-            return this.$baseEl.find('.slide:eq('+(this.currentSlide+1)+')');
-        },
-
-        $getPreviousSlide: function() {
-            if (this.currentSlide === 0) {
-                return $([]);
-            }
-            return this.$baseEl.find('.slide:eq('+(this.currentSlide-1)+')');
+            return this.$baseEl.find('.slide:eq(' + slide + ')');
         },
 
         onHashChange: function() {
