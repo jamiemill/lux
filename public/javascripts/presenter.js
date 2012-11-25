@@ -41,12 +41,6 @@
             setTimeout(function() {self._$baseEl.addClass('states-set');}, 0);
         },
 
-        showSlide: function(number) {
-            this._currentSlide = number;
-            jQuery.bbq.pushState({slide: number + 1});
-            this.updateSlideStates();
-        },
-
         updateSlideStates: function() {
             var self = this;
             this.$getSlides().each(function(i) {
@@ -138,18 +132,20 @@
         },
 
         next: function() {
-            this.navigate(this._currentSlide + 1);
+            this.showSlide(this._currentSlide + 1);
         },
 
         previous: function() {
-            this.navigate(this._currentSlide - 1);
+            this.showSlide(this._currentSlide - 1);
         },
 
-        navigate: function(toSlide) {
-            if (toSlide > this._slideCount-1 || toSlide < 0) {
+        showSlide: function(number) {
+            if (number > this._slideCount-1 || number < 0) {
                 return;
             }
-            this.showSlide(toSlide);
+            this._currentSlide = number;
+            jQuery.bbq.pushState({slide: number + 1});
+            this.updateSlideStates();
         },
 
         $getSlides: function() {
