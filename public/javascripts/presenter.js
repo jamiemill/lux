@@ -7,43 +7,42 @@
     // The actual Presenter class
 
     var Presenter = function(options) {
-        this.$baseEl = $(options.baseEl);
-        this.init();
+        this._$baseEl = $(options.baseEl);
+        this._init();
     };
 
     $.extend(Presenter.prototype, {
 
-        $baseEl: null,
-        slideCount: null,
-        currentSlide: 0,
+        _$baseEl: null,
+        _slideCount: null,
+        _currentSlide: 0,
+        _swipeStartPos: null,
 
-        swipeStartPos: null,
-
-        init: function() {
-            this.slideCount = this.$getSlides().length;
+        _init: function() {
+            this._slideCount = this.$getSlides().length;
             var slideFromURL = jQuery.bbq.getState('slide', true);
             if (slideFromURL) {
-                this.currentSlide = slideFromURL - 1;
+                this._currentSlide = slideFromURL - 1;
             }
-            this.render();
+            this._render();
             var self = this;
             $('body').keyup(function(e) {self.onKeyUp(e);});
             $('body').mousedown(function(e) {self.onSwipeStart(e);});
             $('body').mouseup(function(e) {self.onSwipeEnd(e);});
-            $(window).resize(function() {self.render();});
+            $(window).resize(function() {self._render();});
             $(window).bind('hashchange', function() {self.onHashChange();});
         },
 
-        render: function() {
-            this.showSlide(this.currentSlide);
+        _render: function() {
+            this.showSlide(this._currentSlide);
             // Do this on the next tick to prevent Chrome from animating on initial
             // pageload.
             var self = this;
-            setTimeout(function() {self.$baseEl.addClass('states-set');}, 0);
+            setTimeout(function() {self._$baseEl.addClass('states-set');}, 0);
         },
 
         showSlide: function(number) {
-            this.currentSlide = number;
+            this._currentSlide = number;
             jQuery.bbq.pushState({slide: number + 1});
             this.updateSlideStates();
         },
@@ -51,9 +50,9 @@
         updateSlideStates: function() {
             var self = this;
             this.$getSlides().each(function(i) {
-                $(this).toggleClass('past', i < self.currentSlide);
-                $(this).toggleClass('current', i === self.currentSlide);
-                $(this).toggleClass('future', i > self.currentSlide);
+                $(this).toggleClass('past', i < self._currentSlide);
+                $(this).toggleClass('current', i === self._currentSlide);
+                $(this).toggleClass('future', i > self._currentSlide);
             });
         },
 
@@ -73,7 +72,7 @@
         onSwipeStart: function(e) {
             var self = this;
             e.preventDefault();
-            this.swipeStartPos = e.screenX;
+            this._swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self.onSwipeMove(e);});
             this.$getSlides().addClass('dragging');
             return false;
@@ -83,7 +82,7 @@
             e.preventDefault();
             $('body').unbind('mousemove.presenter');
             this.$getSlides().removeClass('dragging');
-            var offset = e.screenX - this.swipeStartPos;
+            var offset = e.screenX - this._swipeStartPos;
             var toleranceForFullSwipe = 0.3;
             if (offset > toleranceForFullSwipe*$(window).width()) {
                 // user achieved full swipe right
@@ -98,13 +97,13 @@
                 '-o-transform': '',
                 'transform': ''
             });
-            this.swipeStartPos = null;
+            this._swipeStartPos = null;
             return false;
         },
 
         onSwipeMove: function(e) {
             e.preventDefault();
-            var offset = e.screenX - this.swipeStartPos;
+            var offset = e.screenX - this._swipeStartPos;
             var pctOffset = offset/$(window).width()*100;
             this.moveSlides(pctOffset);
             return false;
@@ -124,11 +123,11 @@
         },
 
         $getSlideByRelativeIndex: function(delta) {
-            var slide = this.currentSlide + delta;
-            if (slide > this.slideCount-1 || slide < 0) {
+            var slide = this._currentSlide + delta;
+            if (slide > this._slideCount-1 || slide < 0) {
                 return $([]);
             }
-            return this.$baseEl.find('.slide:eq(' + slide + ')');
+            return this._$baseEl.find('.slide:eq(' + slide + ')');
         },
 
         onHashChange: function() {
@@ -139,22 +138,22 @@
         },
 
         next: function() {
-            this.navigate(this.currentSlide + 1);
+            this.navigate(this._currentSlide + 1);
         },
 
         previous: function() {
-            this.navigate(this.currentSlide - 1);
+            this.navigate(this._currentSlide - 1);
         },
 
         navigate: function(toSlide) {
-            if (toSlide > this.slideCount-1 || toSlide < 0) {
+            if (toSlide > this._slideCount-1 || toSlide < 0) {
                 return;
             }
             this.showSlide(toSlide);
         },
 
         $getSlides: function() {
-            return this.$baseEl.find('.slide');
+            return this._$baseEl.find('.slide');
         }
 
     });
