@@ -83,18 +83,14 @@
             e.preventDefault();
             this.swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self.onSwipeMove(e);});
-            this.$getSlideByRelativeIndex(0).addClass('dragging');
-            this.$getSlideByRelativeIndex(1).addClass('dragging');
-            this.$getSlideByRelativeIndex(-1).addClass('dragging');
+            this.$getSlides().addClass('dragging');
             return false;
         },
 
         onSwipeEnd: function(e) {
             e.preventDefault();
             $('body').unbind('mousemove.presenter');
-            this.$getSlideByRelativeIndex(0).removeClass('dragging');
-            this.$getSlideByRelativeIndex(1).removeClass('dragging');
-            this.$getSlideByRelativeIndex(-1).removeClass('dragging');
+            this.$getSlides().removeClass('dragging');
             var offset = e.screenX - this.swipeStartPos;
             var toleranceForFullSwipe = 0.3;
             if (offset > toleranceForFullSwipe*$(window).width()) {
