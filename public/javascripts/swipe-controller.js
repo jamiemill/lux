@@ -13,13 +13,14 @@
 
         _swipeStartPos: null,
 
+        _toleranceForFullSwipe: 0.3,
+
         _onSwipeStart: function(e) {
-            var self = this;
             e.preventDefault();
+            var self = this;
             this._swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self._onSwipeMove(e);});
             this._presenter.swipeStarted();
-            return false;
         },
 
         _onSwipeEnd: function(e) {
@@ -27,15 +28,12 @@
             $('body').unbind('mousemove.presenter');
             this._presenter.swipeStopped();
             var offset = e.screenX - this._swipeStartPos;
-            var toleranceForFullSwipe = 0.3;
-            if (offset > toleranceForFullSwipe*$(window).width()) {
+            if (offset > this._toleranceForFullSwipe*$(window).width()) {
                 this._presenter.previous();
-            } else if (offset < -toleranceForFullSwipe*$(window).width()) {
+            } else if (offset < -this._toleranceForFullSwipe*$(window).width()) {
                 this._presenter.next();
             }
             this._presenter.shiftSlides(0);
-            this._swipeStartPos = null;
-            return false;
         },
 
         _onSwipeMove: function(e) {
@@ -43,7 +41,6 @@
             var offset = e.screenX - this._swipeStartPos;
             var proportion = offset/$(window).width();
             this._presenter.shiftSlides(proportion);
-            return false;
         }
 
     });

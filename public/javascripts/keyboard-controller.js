@@ -18,11 +18,9 @@
             if (e.keyCode === KEY_LEFT) {
                 e.preventDefault();
                 this._presenter.previous();
-                return false;
             } else if (e.keyCode === KEY_RIGHT || e.keyCode === KEY_SPACE) {
                 e.preventDefault();
                 this._presenter.next();
-                return false;
             }
             return true;
         }
