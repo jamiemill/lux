@@ -4,14 +4,6 @@
     var KEY_LEFT = 37;
     var KEY_SPACE = 32;
 
-    // On page load
-
-    $(document).ready(function() {
-        window.mainPresentation = new Presenter({baseEl: $('.presentation')});
-        $('code,pre').addClass('prettyprint');
-        prettyPrint();
-    });
-
     // The actual Presenter class
 
     var Presenter = function(options) {
@@ -166,6 +158,9 @@
         }
 
     });
+
+    // Export this class
+    window.Presenter = Presenter;
 
 
 })(jQuery);
