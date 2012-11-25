@@ -114,27 +114,21 @@
             e.preventDefault();
             var offset = e.screenX - this.swipeStartPos;
             var pctOffset = offset/$(window).width()*100;
-            var nextPctOffset = pctOffset + 100;
-            var previousPctOffset = pctOffset - 100;
-            this.$getSlideByRelativeIndex(0).css({
-                '-webkit-transform': 'translate('+pctOffset+'%,0px)',
-                '-moz-transform': 'translate('+pctOffset+'%,0px)',
-                '-o-transform': 'translate('+pctOffset+'%,0px)',
-                'transform': 'translate('+pctOffset+'%,0px)'
-            });
-            this.$getSlideByRelativeIndex(1).css({
-                '-webkit-transform': 'translate('+nextPctOffset+'%,0px)',
-                '-moz-transform': 'translate('+nextPctOffset+'%,0px)',
-                '-o-transform': 'translate('+nextPctOffset+'%,0px)',
-                'transform': 'translate('+nextPctOffset+'%,0px)'
-            });
-            this.$getSlideByRelativeIndex(-1).css({
-                '-webkit-transform': 'translate('+previousPctOffset+'%,0px)',
-                '-moz-transform': 'translate('+previousPctOffset+'%,0px)',
-                '-o-transform': 'translate('+previousPctOffset+'%,0px)',
-                'transform': 'translate('+previousPctOffset+'%,0px)'
-            });
+            this.moveSlides(pctOffset);
             return false;
+        },
+
+        moveSlides: function(pctOffset) {
+            var self = this;
+            $.each([-1,0,1], function(i, n) {
+                var offset = pctOffset + n*100;
+                self.$getSlideByRelativeIndex(n).css({
+                    '-webkit-transform': 'translate('+offset+'%,0px)',
+                    '-moz-transform': 'translate('+offset+'%,0px)',
+                    '-o-transform': 'translate('+offset+'%,0px)',
+                    'transform': 'translate('+offset+'%,0px)'
+                });
+            });
         },
 
         $getSlideByRelativeIndex: function(delta) {
