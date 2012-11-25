@@ -12,4 +12,8 @@ $(document).ready(function() {
         presenter: presenter
     });
 
+    var swipeController = new SwipeController({
+        presenter: presenter
+    });
+
 });

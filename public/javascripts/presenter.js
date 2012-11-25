@@ -10,7 +10,6 @@
         _$baseEl: null,
         _slideCount: null,
         _currentSlide: 0,
-        _swipeStartPos: null,
 
         _init: function() {
             this._slideCount = this._$getSlides().length;
@@ -20,8 +19,6 @@
             }
             this._render();
             var self = this;
-            $('body').mousedown(function(e) {self._onSwipeStart(e);});
-            $('body').mouseup(function(e) {self._onSwipeEnd(e);});
             $(window).resize(function() {self._render();});
             $(window).bind('hashchange', function() {self._onHashChange();});
         },
@@ -41,46 +38,6 @@
                 $(this).toggleClass('current', i === self._currentSlide);
                 $(this).toggleClass('future', i > self._currentSlide);
             });
-        },
-
-        _onSwipeStart: function(e) {
-            var self = this;
-            e.preventDefault();
-            this._swipeStartPos = e.screenX;
-            $('body').bind('mousemove.presenter', function(e) {self._onSwipeMove(e);});
-            this._$getSlides().addClass('dragging');
-            return false;
-        },
-
-        _onSwipeEnd: function(e) {
-            e.preventDefault();
-            $('body').unbind('mousemove.presenter');
-            this._$getSlides().removeClass('dragging');
-            var offset = e.screenX - this._swipeStartPos;
-            var toleranceForFullSwipe = 0.3;
-            if (offset > toleranceForFullSwipe*$(window).width()) {
-                // user achieved full swipe right
-                this.previous();
-            } else if (offset < -toleranceForFullSwipe*$(window).width()) {
-                // user achieved full swipe left
-                this.next();
-            }
-            this._$getSlides().css({
-                '-webkit-transform': '',
-                '-moz-transform': '',
-                '-o-transform': '',
-                'transform': ''
-            });
-            this._swipeStartPos = null;
-            return false;
-        },
-
-        _onSwipeMove: function(e) {
-            e.preventDefault();
-            var offset = e.screenX - this._swipeStartPos;
-            var pctOffset = offset/$(window).width()*100;
-            this._moveSlides(pctOffset);
-            return false;
         },
 
         _moveSlides: function(pctOffset) {
