@@ -6,114 +6,102 @@ block content
     .slides
 
       .slide
-        .slide-content
-          h1 A few Backbone.js tips
-          p (Many apply to JavaScript development in general)
+        h1 A few Backbone.js tips
+        p (Many apply to JavaScript development in general)
 
       .slide
-        .slide-content
-          h2 Don't store data in the DOM
-          ul
-            li Avoid ambiguity of state/data spread between JS and HTML
-            li Data truth &rarr; belongs in model instances.
-            li UI state truth &rarr; belongs in view instances.
-            li The DOM is not a source of truth.
-            li Should be able to re-render views any time without worrying about losing some state from the DOM.
+        h2 Don't store data in the DOM
+        ul
+          li Avoid ambiguity of state/data spread between JS and HTML
+          li Data truth &rarr; belongs in model instances.
+          li UI state truth &rarr; belongs in view instances.
+          li The DOM is not a source of truth.
+          li Should be able to re-render views any time without worrying about losing some state from the DOM.
 
       .slide
-        .slide-content
-          h2 Don't store data in the DOM (Example)
-          p To store which tab a user has activated:
-          p Not so good:
+        h2 Don't store data in the DOM (Example)
+        p To store which tab a user has activated:
+        p Not so good:
+        pre
+          | <div data-current-tab="open-ideas">...</div>
+        p Better:
           pre
-            | <div data-current-tab="open-ideas">...</div>
-          p Better:
-            pre
-              | myView.currentTab = OPEN_IDEAS;
+            | myView.currentTab = OPEN_IDEAS;
 
       .slide
-        .slide-content
-          h2 Treat the DOM as write-only
-          ul
-            li Data flows towards the DOM, not back.
-            li Paint and re-paint the DOM like a canvas.
-            li Don't read from it.
-            li (except for user input)
+        h2 Treat the DOM as write-only
+        ul
+          li Data flows towards the DOM, not back.
+          li Paint and re-paint the DOM like a canvas.
+          li Don't read from it.
+          li (except for user input)
 
       .slide
-        .slide-content
-          h2 Be declarative
-          ul
-            li Cuts down on boilerplate
-            li Shows intention over implementation
+        h2 Be declarative
+        ul
+          li Cuts down on boilerplate
+          li Shows intention over implementation
 
       .slide
-        .slide-content
-          h2 Be declarative (with DOM events)
-          p Not so good:
-            pre
-              | this.$('.load-more').click(this.load_more);
-          p Better:
-            pre
-              | // inside a view class
-              | events: {
-              |   'click .load-more': 'load_more',
-              | }
-
-      .slide
-        .slide-content
-          h2 Be declarative (with templates, where possible)
-          p Not so good:
-            pre
-              | this.$('.some-div').append(some_subtemplate());
-          p Better:
-            pre
-              | <div class="some-div">
-              |   {{> some_handlebars_partial}}
-              | </div>
-
-      .slide
-        .slide-content
-          h2 Use the router generously
-          ul
-            li Push navigational state up to the URL
-            li Allows:
-              ul
-                li Refreshing without losing location
-                li Bookmarking/sharing location
-                li Back button
-
-      .slide
-        .slide-content
-          h2 Use the router generously
+        h2 Be declarative (with DOM events)
+        p Not so good:
           pre
-            | var AppRouter = Backbone.Router.extend({
-            |   routes: {
-            |     'report/:year/:month': 'report'
-            |   }
-            | });
+            | this.$('.load-more').click(this.load_more);
+        p Better:
           pre
-            | appRouter.navigate('report/2012/11', {trigger: true});
+            | // inside a view class
+            | events: {
+            |   'click .load-more': 'load_more',
+            | }
 
       .slide
-        .slide-content
-          h2 Make views independent
-          ul
-            li Test them in isolation
-            li When composing views:
+        h2 Be declarative (with templates, where possible)
+        p Not so good:
+          pre
+            | this.$('.some-div').append(some_subtemplate());
+        p Better:
+          pre
+            | <div class="some-div">
+            |   {{> some_handlebars_partial}}
+            | </div>
+
+      .slide
+        h2 Use the router generously
+        ul
+          li Push navigational state up to the URL
+          li Allows:
             ul
-              li Child views should not know about parents.
-              li Child views can dispatch events for parents to listen to.
-              li Parents know about children and their API, but should have no knowledge of the child's DOM tree.
+              li Refreshing without losing location
+              li Bookmarking/sharing location
+              li Back button
 
       .slide
-        .slide-content
-          h2 Assume views might multiply
+        h2 Use the router generously
+        pre
+          | var AppRouter = Backbone.Router.extend({
+          |   routes: {
+          |     'report/:year/:month': 'report'
+          |   }
+          | });
+        pre
+          | appRouter.navigate('report/2012/11', {trigger: true});
+
+      .slide
+        h2 Make views independent
+        ul
+          li Test them in isolation
+          li When composing views:
           ul
-            li Assume every view you build will exist multiple times on the same screen.
-            li Use scoped selectors through a view's <code>this.$</code> instance instead of the global <code>$</code>.
-            li Avoid giving elements IDs. Use classnames instead so you can have many per page.
+            li Child views should not know about parents.
+            li Child views can dispatch events for parents to listen to.
+            li Parents know about children and their API, but should have no knowledge of the child's DOM tree.
 
       .slide
-        .slide-content
-          h1 THE END
+        h2 Assume views might multiply
+        ul
+          li Assume every view you build will exist multiple times on the same screen.
+          li Use scoped selectors through a view's <code>this.$</code> instance instead of the global <code>$</code>.
+          li Avoid giving elements IDs. Use classnames instead so you can have many per page.
+
+      .slide
+        h1 THE END

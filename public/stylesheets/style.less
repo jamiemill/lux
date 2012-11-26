@@ -53,6 +53,7 @@ code, pre {
     -webkit-transform: translate(@x, @y);
     -moz-transform: translate(@x, @y);
     -o-transform: translate(@x, @y);
+    -ms-transform: translate(@x, @y);
     transform: translate(@x, @y);
 }
 
@@ -69,6 +70,10 @@ code, pre {
             position: absolute;
             overflow: hidden;
             width: 100%;
+            padding: 2em;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
             &.past {
                 .translate(-100%, 0);
             }
@@ -76,9 +81,6 @@ code, pre {
             }
             &.future {
                 .translate(100%, 0);
-            }
-            .slide-content {
-                padding: 2em;
             }
         }
 
