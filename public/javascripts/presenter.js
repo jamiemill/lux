@@ -41,6 +41,41 @@
             });
         },
 
+        _$getSlideByRelativeIndex: function(delta) {
+            var slide = this._currentSlide + delta;
+            if (slide > this._slideCount-1 || slide < 0) {
+                return $([]);
+            }
+            return this._$baseEl.find('.slide:eq(' + slide + ')');
+        },
+
+        _$getSlides: function() {
+            return this._$baseEl.find('.slide');
+        },
+
+        next: function() {
+            this.showSlide(this._currentSlide + 1);
+        },
+
+        previous: function() {
+            this.showSlide(this._currentSlide - 1);
+        },
+
+        showSlide: function(number) {
+            if (number > this._slideCount-1 || number < 0) {
+                return;
+            }
+            this._currentSlide = number;
+            this._$baseEl.trigger('slidechange', number);
+            this._updateSlideStates();
+        },
+
+        /**
+         * Shift slides left or right by proportion of screen width.
+         * This is used by the SwipeController to make the slides
+         * follow the swipe gesture.
+         */
+
         shiftSlides: function(proportion) {
             if (proportion === 0) {
                 this._$getSlides().css({
@@ -62,35 +97,6 @@
                     'transform': setting
                 });
             });
-        },
-
-        _$getSlideByRelativeIndex: function(delta) {
-            var slide = this._currentSlide + delta;
-            if (slide > this._slideCount-1 || slide < 0) {
-                return $([]);
-            }
-            return this._$baseEl.find('.slide:eq(' + slide + ')');
-        },
-
-        next: function() {
-            this.showSlide(this._currentSlide + 1);
-        },
-
-        previous: function() {
-            this.showSlide(this._currentSlide - 1);
-        },
-
-        showSlide: function(number) {
-            if (number > this._slideCount-1 || number < 0) {
-                return;
-            }
-            this._currentSlide = number;
-            this._$baseEl.trigger('slidechange', number);
-            this._updateSlideStates();
-        },
-
-        _$getSlides: function() {
-            return this._$baseEl.find('.slide');
         },
 
         swipeStarted: function() {
