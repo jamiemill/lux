@@ -86,9 +86,8 @@ code, pre {
 
     }
 
-    &.states-set {
-        // Only perform transitions when starting classes have been applied
-        .slide:not(.dragging) {
+    &.enable-transitions {
+        .slide {
             -webkit-transition: -webkit-transform 500ms;
             -moz-transition: -moz-transform 500ms;
             -o-transition: -o-transform 500ms;

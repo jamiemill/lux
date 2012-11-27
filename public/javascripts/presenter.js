@@ -25,10 +25,11 @@
         _init: function() {
             this._slideCount = this._$getSlides().length;
             this.showSlide(this._currentSlide);
+            // Don't want transitions to be applied until initial states are set.
             // Do this on the next tick to prevent Chrome from animating on initial
             // pageload.
             var self = this;
-            setTimeout(function() {self._$baseEl.addClass('states-set');}, 0);
+            setTimeout(function() {self._$baseEl.addClass('enable-transitions');}, 0);
         },
 
         _updateSlideStates: function() {
@@ -93,11 +94,11 @@
         },
 
         swipeStarted: function() {
-            this._$getSlides().addClass('dragging');
+            this._$baseEl.removeClass('enable-transitions');
         },
 
         swipeStopped: function() {
-            this._$getSlides().removeClass('dragging');
+            this._$baseEl.addClass('enable-transitions');
         }
 
     });
