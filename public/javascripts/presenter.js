@@ -71,9 +71,17 @@
         },
 
         /**
-         * Shift slides left or right by proportion of screen width.
-         * This is used by the SwipeController to make the slides
-         * follow the swipe gesture.
+         * Shift current, previous and next slides (if they exist) left or
+         * right by proportion of screen width.
+         *
+         * This can be used to animate a transition frame-by-frame.
+         *
+         * It's used by the SwipeController to make the transition follow the
+         * swipe gesture.
+         *
+         * NOTE: Before calling this, first call `disableTransitions` otherwise
+         * the normal CSS3 transitions will also try to animate and cause
+         * lagginess. Then call `enableTransitions` afterwards.
          */
 
         shiftSlides: function(proportion) {
