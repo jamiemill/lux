@@ -26,20 +26,7 @@
             var self = this;
             this._swipeStartPos = e.screenX;
             $('body').bind('mousemove.presenter', function(e) {self._onSwipeMove(e);});
-            this._presenter.swipeStarted();
-        },
-
-        _onSwipeEnd: function(e) {
-            e.preventDefault();
-            $('body').unbind('mousemove.presenter');
-            this._presenter.swipeStopped();
-            var offset = e.screenX - this._swipeStartPos;
-            if (offset > this._toleranceForFullSwipe*$(window).width()) {
-                this._presenter.previous();
-            } else if (offset < -this._toleranceForFullSwipe*$(window).width()) {
-                this._presenter.next();
-            }
-            this._presenter.shiftSlides(0);
+            this._presenter.disableTransitions();
         },
 
         _onSwipeMove: function(e) {
@@ -47,6 +34,19 @@
             var offset = e.screenX - this._swipeStartPos;
             var proportion = offset/$(window).width();
             this._presenter.shiftSlides(proportion);
+        },
+
+        _onSwipeEnd: function(e) {
+            e.preventDefault();
+            $('body').unbind('mousemove.presenter');
+            this._presenter.enableTransitions();
+            var offset = e.screenX - this._swipeStartPos;
+            if (offset > this._toleranceForFullSwipe*$(window).width()) {
+                this._presenter.previous();
+            } else if (offset < -this._toleranceForFullSwipe*$(window).width()) {
+                this._presenter.next();
+            }
+            this._presenter.shiftSlides(0);
         }
 
     });

@@ -99,11 +99,11 @@
             });
         },
 
-        swipeStarted: function() {
+        disableTransitions: function() {
             this._$baseEl.removeClass('enable-transitions');
         },
 
-        swipeStopped: function() {
+        enableTransitions: function() {
             this._$baseEl.addClass('enable-transitions');
         }
 
