@@ -27,4 +27,4 @@ node.js
 
     node present
 
-then visit http://<your computer>:3000
+then visit `http://<your computer>:3000`
