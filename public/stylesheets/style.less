@@ -36,6 +36,10 @@ h1, h2, h3 {
     margin: 0 0 0.5em 0;
 }
 
+h3 {
+    margin: 0 0 1em 0;
+}
+
 pre, p, ul, ol {
     margin: 0 0 0.5em 0;
 }
@@ -47,6 +51,13 @@ code, pre {
     border-radius: 0.15em;
     font-family: 'Ubuntu Mono', Inconsolata, 'Courier New', Courier, fixed-width;
     line-height: 1.2em;
+}
+
+.key {
+    border: 1px solid fadeout(white, 30%);
+    margin: 0 0.25em 0 0;
+    padding: 0.1em 0.3em;
+    border-radius: 0.15em;
 }
 
 .translate(@x, @y) {
@@ -97,3 +108,33 @@ code, pre {
 
 }
 
+p.hint {
+    opacity: 0.5;
+    margin-top: 2em;
+    text-align: right;
+}
+
+.clearfix {
+    &:before,
+    &:after {
+        content:"";
+        display:table;
+    }
+    &:after {
+        clear:both;
+    }
+    /* For IE 6/7 (trigger hasLayout) */
+    zoom:1;
+}
+
+
+.row {
+    .clearfix();
+    .col {
+        float: left;
+        &.half {
+            width: 45%;
+            margin-right: 5%;
+        }
+    }
+}

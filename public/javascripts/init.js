@@ -1,7 +1,7 @@
 // On page load
 
 $(document).ready(function() {
-    $('code,pre').addClass('prettyprint');
+    $('code:not(.ugly),pre:not(.ugly)').addClass('prettyprint');
     prettyPrint();
 
     var presenter = new Presenter({
