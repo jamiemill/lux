@@ -2,7 +2,11 @@ var path = require('path');
 var jade = require('jade');
 var fs = require('fs');
 var exec = require('child_process').exec;
-function puts(error, stdout, stderr) { console.log(stdout); }
+function puts(error, stdout, stderr) {
+    if (error) {
+        console.log(error);
+    }
+}
 
 // Create index.html from layout and presentation content
 var contentFile = 'views/index.jade';
@@ -11,3 +15,5 @@ fs.writeFileSync('export/index.html', content);
 
 // Copy stylesheet and JS files
 exec("cp -R public/* export/", puts);
+
+console.log("Exported to export/index.html");
