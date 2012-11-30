@@ -3,75 +3,72 @@ extends layout
 block vars
   - var title = 'Presenter.js - an HTML5 / Jade / Node.js presentation framework.'
 
-block content
+block slides
 
-  .presentation
-    .slides
-
-      .slide
-        h1 Presenter.js
-        .row
-          .col.half
-            p Write presentations in Jade:
-            pre.ugly
-              | .slide
-              |   h1 My Presentation
-              |   p This is slide one.
-              | 
-              | .slide
-              |   h2 Slide two
-          .col.half
-            p Run the built-in server like this:
-            pre.lang-bsh
-              | $ node presenter
-            p Then access over the network at:
-            pre.ugly
-              | http://<your-computer>:3000
-            p Get started <a href="http://github.com/jamiemill/presenter.js">on GitHub</a>.
-        p.hint
-          | Hit <span class="key">spacebar</span>, <span class="key">&rarr;</span>
-          | or swipe to see more.
-
-      .slide
-        h2 Built-in syntax highlighting
-        p
-          |All <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks are highlighted with
-          | <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">Google Prettifier</a>.
-        .row
-          .col.half
-            p Example:
-            pre.ugly
-              | pre
-              |   | var foo = 'bar';
-          .col.half
-            p Becomes:
-            pre
-              | var foo = 'bar';
-        p Disable highlighing by adding class <code>.ugly</code>.
-        p.hint <span class="key">&rarr;</span>
-
-      .slide
-        h2 URL integration
-        p Slides are bookmarkable and the browser's 'back' button works:
-        p e.g. to go to slide three:
+  .slide
+    h1 Presenter.js
+    .row
+      .col.half
+        p Write presentations in Jade:
         pre.ugly
-          | http://<your computer>:3000/#slide=3
-        p.hint <span class="key">&rarr;</span>
-
-      .slide
-        h2 Make columns
-        p Split a slide in two like this:
+          | .slide
+          |   h1 My Presentation
+          |   p This is slide one.
+          | 
+          | .slide
+          |   h2 Slide two
+      .col.half
+        p Run the built-in server like this:
+        pre.lang-bsh
+          | $ node presenter
+        p Then access over the network at:
         pre.ugly
-          | .row
-          |   .col.half
-          |     p Left content here
-          |   .col.half
-          |     p Right content here
-        p.hint <span class="key">&rarr;</span>
+          | http://<your-computer>:3000
+        p Get started <a href="http://github.com/jamiemill/presenter.js">on GitHub</a>.
+    p.hint
+      | Hit <span class="key">spacebar</span>, <span class="key">&rarr;</span>
+      | or swipe to see more.
 
-      .slide
-        h2 Contribute!
-        p Please contribute at <a href="http://github.com/jamiemill/presenter.js">http://github.com/jamiemill/presenter.js</a>.
+  .slide
+    h2 Built-in syntax highlighting
+    p
+      |All <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks are highlighted with
+      | <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">Google Prettifier</a>.
+    .row
+      .col.half
+        p Example:
+        pre.ugly
+          | pre
+          |   | var foo = 'bar';
+      .col.half
+        p Becomes:
+        pre
+          | var foo = 'bar';
+    p Disable highlighing by adding class <code>.ugly</code>.
+    p.hint <span class="key">&rarr;</span>
 
+  .slide
+    h2 URL integration
+    p Slides are bookmarkable and the browser's 'back' button works:
+    p e.g. to go to slide three:
+    pre.ugly
+      | http://<your computer>:3000/#slide=3
+    p.hint <span class="key">&rarr;</span>
 
+  .slide
+    h2 Make columns
+    p Split a slide in two like this:
+    pre.ugly
+      | .row
+      |   .col.half
+      |     p Left content here
+      |   .col.half
+      |     p Right content here
+    p.hint <span class="key">&rarr;</span>
+
+  .slide
+    h2 Contribute!
+    p Please contribute at <a href="http://github.com/jamiemill/presenter.js">http://github.com/jamiemill/presenter.js</a>.
+
+block after
   <a href="https://github.com/jamiemill/presenter.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -16,4 +16,8 @@ html
     script(src='/javascripts/url-binder.js')
     script(src='/javascripts/init.js')
   body
-    block content
+    block before
+    .presentation
+      .slides
+        block slides
+    block after
