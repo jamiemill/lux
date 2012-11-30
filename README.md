@@ -21,10 +21,10 @@ node.js
 
 # Install
 
-  npm install
+    npm install
 
 # Run
 
-  node app
+    node present
 
-then visit http://localhost:3000 (or your computer's hostname over the network)
+then visit http://<your computer>:3000
