@@ -17,7 +17,6 @@ block content
               | 
               | .slide
               |   h2 Slide two
-              |   p This is slide two.
           .col.half
             p Run the built-in server like this:
             pre.lang-bsh
@@ -55,6 +54,16 @@ block content
         pre.ugly
           | http://<your computer>:3000/#slide=3
         p.hint <span class="key">&rarr;</span>
+
+      .slide
+        h2 Make columns
+        p Split a slide in two like this:
+        pre.ugly
+          | .row
+          |   .col.half
+          |     p Left content here
+          |   .col.half
+          |     p Right content here
 
       .slide
         h2 Contribute!
