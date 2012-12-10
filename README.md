@@ -28,3 +28,7 @@ node.js
     node present
 
 then visit `http://<your computer>:3000`
+
+# License
+
+MIT, see the LICENSE file.
