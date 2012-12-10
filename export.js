@@ -10,7 +10,7 @@ function puts(error, stdout, stderr) {
 
 // Create index.html from layout and presentation content
 var contentFile = 'views/index.jade';
-var content = jade.compile(fs.readFileSync(contentFile, 'utf-8'), {filename: contentFile})();
+var content = jade.compile(fs.readFileSync(contentFile, 'utf-8'), {filename: contentFile, pretty: true})();
 fs.writeFileSync('export/index.html', content);
 
 // Copy stylesheet and JS files
