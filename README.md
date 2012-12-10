@@ -8,6 +8,10 @@ An HTML5 presentation framework, with the goals:
 - remote control (not yet implemented)
 - export to standalone html/js (not yet implemented)
 
+# Demo & Docs
+
+<http://jamiemill.github.com/presenter.js/>
+
 # Requirements
 
 node.js
