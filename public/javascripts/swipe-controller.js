@@ -2,8 +2,7 @@
 
     /**
      * This class controls a presentation with
-     * swipe-like gestures.
-     * TODO: Make it work with touch events instead of mouse.
+     * swipe-like gestures with either mouse or touch.
      */
 
     var SWIPESTART_EVENT = 'touchstart.presenter mousedown.presenter';
