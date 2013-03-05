@@ -10,7 +10,7 @@ An HTML5 presentation framework, with the goals:
 
 # Demo & Docs
 
-<http://jamiemill.github.com/presenter.js/>
+<http://jamiemill.github.com/pres/>
 
 # Requirements
 
@@ -25,11 +25,11 @@ node.js
 
 # Install Dependencies
 
-    npm install
+    npm install -g pres
 
 # Run
 
-    node present
+    pres
 
 then visit `http://<your computer>:3000`
 
