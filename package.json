@@ -1,9 +1,10 @@
 {
-  "name": "application-name",
+  "name": "pres",
+  "description": "An HTML5 presentation framework with the goals of simplicity, good looks, proper syntax highlighting, and remote control.",
   "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app"
+  "main": "./lib/pres/server.js",
+  "bin": {
+    "pres": "./bin/pres"
   },
   "dependencies": {
     "express": "3.0.0",
