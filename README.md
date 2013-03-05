@@ -27,11 +27,21 @@ node.js
 
     npm install -g pres
 
-# Run
+# Generate a skeleton presentation
+
+    pres generate
+
+WARNING: this overwrites files in the current directory.
+
+# Serve the presentation
 
     pres
 
 then visit `http://<your computer>:3000`
+
+# Export (not implemented)
+
+    pres export
 
 # License
 
