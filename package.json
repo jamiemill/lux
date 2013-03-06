@@ -10,6 +10,6 @@
     "express": "3.0.0",
     "jade": "*",
     "less-middleware": "*",
-    "q": "~0.9"
+    "deferred": "~0.6"
   }
 }
