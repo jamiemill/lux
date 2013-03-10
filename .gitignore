@@ -2,3 +2,4 @@ node_modules
 public/stylesheets/style.css
 todo.md
 export/*
+example/export
