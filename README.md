@@ -29,7 +29,7 @@ node.js
   - Firefox 10
 - Should work on IE9+, but not tested.
 
-## Install Dependencies
+## Install
 
     npm install -g presenteur
 
