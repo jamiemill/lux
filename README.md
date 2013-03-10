@@ -1,4 +1,4 @@
-# Presenter
+# Presenteur
 
 An HTML5 presentation framework, with the goals:
 
@@ -10,7 +10,13 @@ An HTML5 presentation framework, with the goals:
 
 # Demo & Docs
 
-<http://jamiemill.github.com/pres/>
+<http://jamiemill.github.com/presenteur/>
+
+# Features
+
+- Remote control over a network
+- Local control from a popup window on another screen
+- Local control by keyboard arrows, spacebar, touch swiping, or dragging with the mouse
 
 # Requirements
 
@@ -25,23 +31,28 @@ node.js
 
 # Install Dependencies
 
-    npm install -g pres
+    npm install -g presenteur
 
-# Generate a skeleton presentation
+# Usage
 
-    pres generate
+## Generate a skeleton presentation
+
+    presenteur generate
 
 WARNING: this overwrites files in the current directory.
 
-# Serve the presentation
+## Serve the presentation
 
-    pres
+    presenteur
 
 then visit `http://<your computer>:3000`
 
-# Export (not implemented)
+- remote control it at `/master`
+- local control from a second screen by clicking the 'Control Window' button
 
-    pres export
+## Export to static HTML (not implemented)
+
+    presenteur export
 
 # License
 
