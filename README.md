@@ -8,40 +8,40 @@ An HTML5 presentation framework, with the goals:
 - remote control (not yet implemented)
 - export to standalone html/js (not yet implemented)
 
-# Demo & Docs
+## Demo & Docs
 
 <http://jamiemill.github.com/presenteur/>
 
-# Features
+## Features
 
 - Remote control over a network
 - Local control from a popup window on another screen
 - Local control by keyboard arrows, spacebar, touch swiping, or dragging with the mouse
 
-# Requirements
+## Requirements
 
 node.js
 
-# Browser Support
+## Browser Support
 
 - Tested on:
   - Chrome 23
   - Firefox 10
 - Should work on IE9+, but not tested.
 
-# Install Dependencies
+## Install Dependencies
 
     npm install -g presenteur
 
-# Usage
+## Usage
 
-## Generate a skeleton presentation
+### Generate a skeleton presentation
 
     presenteur generate
 
 WARNING: this overwrites files in the current directory.
 
-## Serve the presentation
+### Serve the presentation
 
     presenteur
 
@@ -50,10 +50,10 @@ then visit `http://<your computer>:3000`
 - remote control it at `/master`
 - local control from a second screen by clicking the 'Control Window' button
 
-## Export to static HTML (not implemented)
+### Export to static HTML (not implemented)
 
     presenteur export
 
-# License
+## License
 
 MIT, see the LICENSE file.
