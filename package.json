@@ -12,5 +12,10 @@
     "less-middleware": "*",
     "deferred": "~0.6",
     "socket.io": "~0.9"
+  },
+  "devDependencies": {
+      "mocha": "~1.8",
+      "chai": "~1.5",
+      "chai-as-promised": "~3.2"
   }
 }
