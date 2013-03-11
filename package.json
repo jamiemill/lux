@@ -1,7 +1,7 @@
 {
   "name": "presenteur",
   "description": "An HTML5 presentation framework with the goals of simplicity, good looks, proper syntax highlighting, and remote control.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./lib/presenteur/presentation.js",
   "bin": {
     "presenteur": "./bin/presenteur"
