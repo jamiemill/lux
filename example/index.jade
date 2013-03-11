@@ -29,14 +29,38 @@ block slides
           | or swipe to see more.
 
   .slide
+    h2 Install
+    pre.ugly
+      | npm install -g presenteur
+    p.hint <span class="key">&rarr;</span>
+
+  .slide
+    h2 Getting Started
+    p Generate a skeleton presentation
+    pre.ugly
+      | $ mkdir mypres && cd mypres
+      | $ presenteur generate
+    p Then edit the index.jade file to add your content.
+    p.hint <span class="key">&rarr;</span>
+
+  .slide
+    h2 Serving presentation over the network
+    pre.ugly
+      | $ presenteur
+      | ==> Presentation running on http://<your computer>:3000
+    p.hint <span class="key">&rarr;</span>
+
+  .slide
     h2 Remote Control
     p Visit <code>/master</code> on another device to remote control the presentation.
+    p.hint <span class="key">&rarr;</span>
 
   .slide
     h2 Static HTML Export
     p
       | Export static HTML with <code>presenteur export</code> and you get a fully-featured
       | presentation in HTML format, but without remote control abilities.
+    p.hint <span class="key">&rarr;</span>
 
   .slide
     h2 Built-in syntax highlighting
