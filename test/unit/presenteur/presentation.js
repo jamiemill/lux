@@ -19,7 +19,7 @@ describe('Presentation', function() {
         it('throws exception if no index.jade found.', function() {
             expect(function() {
                 pres.checkAssets();
-            }).to.throw('No index.jade file found.');
+            }).to.Throw('No index.jade file found.');
         });
     });
 
@@ -32,7 +32,7 @@ describe('Presentation', function() {
         it('throws exception if no layout.jade found.', function() {
             expect(function() {
                 pres.checkAssets();
-            }).to.throw('No layout.jade file found.');
+            }).to.Throw('No layout.jade file found.');
         });
     });
 
