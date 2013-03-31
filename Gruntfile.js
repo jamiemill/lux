@@ -18,11 +18,16 @@ module.exports = function(grunt) {
                 ui: 'bdd'
             },
             src: 'test/unit/**/*.js'
+        },
+        watch: {
+            files: '**/*',
+            tasks: ['jshint', 'cafemocha']
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-cafe-mocha');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['jshint', 'cafemocha']);
 
