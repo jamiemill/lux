@@ -1,9 +1,9 @@
 var chai = require('chai'),
     expect = chai.expect,
     sinon = require('sinon'),
-    sinonChai = require("sinon-chai"),
+    sinonChai = require('sinon-chai'),
     path = require('path'),
-    ROOT = path.resolve(__dirname+'/../../../'),
+    ROOT = path.resolve(__dirname + '/../../../'),
     LIB = ROOT + '/lib/',
     TEST = ROOT + '/test/',
     presentation = require(LIB + 'presenteur/presentation');

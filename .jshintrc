@@ -1,4 +1,5 @@
 {
+  "strict": false,
   "browser": true,
   "node": true,
   "globals": {
