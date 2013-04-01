@@ -15,7 +15,8 @@ module.exports = function(grunt) {
         },
         cafemocha: {
             options: {
-                ui: 'bdd'
+                ui: 'bdd',
+                reporter: 'dot'
             },
             src: 'test/unit/**/*.js'
         },
