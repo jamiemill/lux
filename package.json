@@ -22,6 +22,7 @@
     "grunt-cafe-mocha": "~0.1.1",
     "grunt-contrib-watch": "~0.3.1",
     "sinon-chai": "~2.3.1",
-    "sinon": "~1.6.0"
+    "sinon": "~1.6.0",
+    "grunt-karma": "~0.3.0"
   }
 }

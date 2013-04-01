@@ -20,16 +20,24 @@ module.exports = function(grunt) {
             },
             src: 'test/unit/**/*.js'
         },
+        // NOTE: need to start karma server first in
+        // separate window with `grunt karma:unit`
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        },
         watch: {
             files: '**/*',
-            tasks: ['jshint', 'cafemocha']
+            tasks: ['jshint', 'cafemocha', 'karma:unit:run']
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-cafe-mocha');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['jshint', 'cafemocha']);
+    grunt.registerTask('default', ['jshint', 'cafemocha', 'karma:unit:run']);
 
 };
