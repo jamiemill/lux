@@ -23,26 +23,28 @@
         _currentSlide: 0,
 
         _init: function() {
-            this.scaleToFit();
+            //this.scaleToFit();
             this._slideCount = this._$getSlides().length;
             this.showSlide(this._currentSlide);
-            // Don't want transitions to be applied until initial states are set.
-            // Do this on the next tick to prevent Chrome from animating on initial
-            // pageload.
-            var self = this;
-            setTimeout(function() {self._$baseEl.addClass('enable-transitions');}, 0);
+            //// Don't want transitions to be applied until initial states are set.
+            //// Do this on the next tick to prevent Chrome from animating on initial
+            //// pageload.
+            //var self = this;
+            //setTimeout(function() {
+                //self._$baseEl.addClass('enable-transitions');
+            //}, 1);
         },
 
-        scaleToFit: function() {
-            var referenceWidth = 1400;
-            var referenceHeight = 800;
-            var width = this._$baseEl.width();
-            var height = this._$baseEl.height();
-            var scale = Math.min(width/referenceWidth, height/referenceHeight);
-            this._$baseEl.css({
-                'font-size': scale*100 + '%'
-            });
-        },
+        //scaleToFit: function() {
+            //var referenceWidth = 1400;
+            //var referenceHeight = 800;
+            //var width = this._$baseEl.width();
+            //var height = this._$baseEl.height();
+            //var scale = Math.min(width/referenceWidth, height/referenceHeight);
+            //this._$baseEl.css({
+                //'font-size': scale*100 + '%'
+            //});
+        //},
 
         _updateSlideStates: function() {
             var self = this;
@@ -53,13 +55,13 @@
             });
         },
 
-        _$getSlideByRelativeIndex: function(delta) {
-            var slide = this._currentSlide + delta;
-            if (slide > this._slideCount-1 || slide < 0) {
-                return $([]);
-            }
-            return this._$baseEl.find('.slide:eq(' + slide + ')');
-        },
+        //_$getSlideByRelativeIndex: function(delta) {
+            //var slide = this._currentSlide + delta;
+            //if (slide > this._slideCount-1 || slide < 0) {
+                //return $([]);
+            //}
+            //return this._$baseEl.find('.slide:eq(' + slide + ')');
+        //},
 
         _$getSlides: function() {
             return this._$baseEl.find('.slide');
@@ -100,28 +102,28 @@
          * lagginess. Then call `enableTransitions` afterwards.
          */
 
-        shiftSlides: function(proportion) {
-            if (proportion === 0) {
-                this._$getSlides().css({
-                    '-webkit-transform': '',
-                    '-moz-transform': '',
-                    '-o-transform': '',
-                    'transform': ''
-                });
-                return;
-            }
-            var self = this;
-            $.each([-1,0,1], function(i, n) {
-                var offset = proportion*100 + n*100;
-                var setting = 'translate(' + offset + '%, 0px)';
-                self._$getSlideByRelativeIndex(n).css({
-                    '-webkit-transform': setting,
-                    '-moz-transform': setting,
-                    '-o-transform': setting,
-                    'transform': setting
-                });
-            });
-        },
+        //shiftSlides: function(proportion) {
+            //if (proportion === 0) {
+                //this._$getSlides().css({
+                    //'-webkit-transform': '',
+                    //'-moz-transform': '',
+                    //'-o-transform': '',
+                    //'transform': ''
+                //});
+                //return;
+            //}
+            //var self = this;
+            //$.each([-1,0,1], function(i, n) {
+                //var offset = proportion*100 + n*100;
+                //var setting = 'translate(' + offset + '%, 0px)';
+                //self._$getSlideByRelativeIndex(n).css({
+                    //'-webkit-transform': setting,
+                    //'-moz-transform': setting,
+                    //'-o-transform': setting,
+                    //'transform': setting
+                //});
+            //});
+        //},
 
         disableTransitions: function() {
             this._$baseEl.removeClass('enable-transitions');

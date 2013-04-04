@@ -54,6 +54,22 @@ then visit `http://<your computer>:3000`
 
     presenteur export
 
+## Development
+
+To run tests first start karma server in one window:
+
+    grunt karma:unit
+
+Then to run jshint, server-side tests and client-side tests run:
+
+    grunt
+
+Or if you want to watch for file changes and automatically run all the above, do:
+
+    grunt watch
+
+To do local development while testing with the global `presenteur` command, run `npm link` to make your checked-out copy become the global binary.
+
 ## License
 
 MIT, see the LICENSE file.

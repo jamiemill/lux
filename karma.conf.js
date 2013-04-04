@@ -10,7 +10,11 @@ basePath = '';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  'public/components/*.js',
+  'public/components/jquery-1.8.3.min.js',
+  'public/components/jquery.ba-bbq.min.js',
+  'public/components/chai.js',
+  'public/components/chai-jquery.js',
+  'public/components/microevent.js',
   'public/javascripts/lib/**/*.js',
   'test/public/**/*.js'
 ];
