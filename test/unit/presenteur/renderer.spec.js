@@ -7,7 +7,7 @@ var chai = require('chai'),
     ROOT = path.resolve(__dirname + '/../../../'),
     LIB = ROOT + '/lib/',
     TEST = ROOT + '/test/',
-    presentation = require(LIB + 'presenteur/presentation'),
+    renderer = require(LIB + 'presenteur/renderer'),
     check = function(done, f) {
         try {
             f();
@@ -22,9 +22,9 @@ chai.use(sinonChai);
 // Disabled, I can't get it to work. See below.
 //chai.use(chaiAsPromised);
 
-describe('Presentation', function() {
+describe('Renderer', function() {
 
-    var pres,
+    var rend,
         stdout;
 
     beforeEach(function() {
@@ -37,41 +37,41 @@ describe('Presentation', function() {
 
         describe('with missing index.jade file', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/noindex/',
                     stdout: stdout
                 });
             });
             it('throws exception if no index.jade found.', function() {
                 expect(function() {
-                    pres.checkAssets();
+                    rend.checkAssets();
                 }).to.Throw('No index.jade file found.');
             });
         });
 
         describe('with missing layout.jade file', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/nolayout/',
                     stdout: stdout
                 });
             });
             it('throws exception if no layout.jade found.', function() {
                 expect(function() {
-                    pres.checkAssets();
+                    rend.checkAssets();
                 }).to.Throw('No layout.jade file found.');
             });
         });
 
         describe('with both present', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/valid/',
                     stdout: stdout
                 });
             });
             it('says that things are ok', function() {
-                pres.checkAssets();
+                rend.checkAssets();
                 expect(stdout.write.callCount).to.equal(3);
                 expect(stdout.write.getCall(0).args[0]).to.equal('- Found /Users/jamiemill/Work/presenteur/src/test/fixtures/presentations/valid/index.jade.');
                 expect(stdout.write.getCall(1).args[0]).to.equal('- Found /Users/jamiemill/Work/presenteur/src/test/fixtures/presentations/valid/layout.jade.');
@@ -92,16 +92,16 @@ describe('Presentation', function() {
 
         describe('with missing index.jade file', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/noindex/',
                     stdout: stdout
                 });
             });
             it('eventually fails with error', function(done) {
                 // Can't get chai-as-promised to work :(
-                // expect(pres.getIndexPage()).to.be.rejected.with('xxxxx').and.notify(done);
+                // expect(rend.getIndexPage()).to.be.rejected.with('xxxxx').and.notify(done);
 
-                pres.getIndexPage().then(function() {
+                rend.getIndexPage().then(function() {
                     done(new Error('should not succeed'));
                 }, function(error) {
                     expect(error.message).to.match(/File does not exist/);
@@ -113,14 +113,14 @@ describe('Presentation', function() {
 
         describe.skip('with missing layout.jade file', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/nolayout/',
                     stdout: stdout
                 });
             });
 
             it('throws exception', function(done) {
-                pres.getIndexPage().then(function() {
+                rend.getIndexPage().then(function() {
                     done(new Error('should not succeed'));
                 }, function(error) {
                     expect(error.message).to.match(/File does not exist/);
@@ -132,14 +132,14 @@ describe('Presentation', function() {
 
         describe('with both present', function() {
             beforeEach(function() {
-                pres = presentation.create({
+                rend = renderer.create({
                     directory: TEST + 'fixtures/presentations/valid/',
                     stdout: stdout
                 });
             });
 
             it('can return the index html', function(done) {
-                pres.getIndexPage()
+                rend.getIndexPage()
                     .then(function(html) {
                         expect(html).to.contain('<div class="slide"><h1>Slide 1</h1></div>');
                         expect(html).to.contain('<div class="slide"><h2>Slide 2</h2></div>');
