@@ -2,11 +2,9 @@ doctype 5
 block vars
 html
   head
-    title= title
+    title Presenteur
     !{pres_assets}
   body
     block before
     .presentation
-      .slides
-        block slides
-    block after
+      !{content}

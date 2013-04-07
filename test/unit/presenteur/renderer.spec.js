@@ -32,18 +32,7 @@ describe('Renderer', function() {
         });
     });
 
-    describe('with missing layout.jade file', function() {
-        it('throws exception if no layout.jade found.', function() {
-            expect(function() {
-                rend = renderer.create({
-                    directory: TEST + 'fixtures/presentations/nolayout/',
-                    stdout: stdout
-                });
-            }).to.Throw('No layout.jade file found.');
-        });
-    });
-
-    describe('with both present', function() {
+    describe('with index.jade file', function() {
         beforeEach(function() {
             rend = renderer.create({
                 directory: TEST + 'fixtures/presentations/valid/',
@@ -52,10 +41,9 @@ describe('Renderer', function() {
         });
 
         it('says that things are ok', function() {
-            expect(stdout.write.callCount).to.equal(3);
+            expect(stdout.write.callCount).to.equal(2);
             expect(stdout.write.getCall(0).args[0]).to.equal('- Found /Users/jamiemill/Work/presenteur/src/test/fixtures/presentations/valid/index.jade.\n');
-            expect(stdout.write.getCall(1).args[0]).to.equal('- Found /Users/jamiemill/Work/presenteur/src/test/fixtures/presentations/valid/layout.jade.\n');
-            expect(stdout.write.getCall(2).args[0]).to.equal('- Serving extra assets from public/.\n');
+            expect(stdout.write.getCall(1).args[0]).to.equal('- Serving extra assets from public/.\n');
         });
 
         it('can return the index html', function(done) {
@@ -68,7 +56,23 @@ describe('Renderer', function() {
             .end();
         });
 
-    });
+        it('wraps the index page in the layout', function(done) {
+            rend.getIndexPage()
+                .then(function(html) {
+                    expect(html).to.contain('<title>Presenteur</title>');
+                    done();
+                }, done)
+            .end();
+        });
 
+        it('includes the assets', function(done) {
+            rend.getIndexPage()
+                .then(function(html) {
+                    expect(html).to.contain('<script src="javascripts/lib/presentation.js"></script>');
+                    done();
+                }, done)
+            .end();
+        });
+    });
 
 });
