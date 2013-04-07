@@ -28,7 +28,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: '**/*',
+            files: '**/*.js',
             tasks: ['jshint', 'cafemocha', 'karma:unit:run']
         }
     });
