@@ -24,6 +24,7 @@
     "sinon-chai": "~2.3.1",
     "sinon": "~1.6.0",
     "grunt-karma": "~0.3.0",
-    "supertest": "~0.5.1"
+    "supertest": "~0.5.1",
+    "sandboxed-module": "~0.2.0"
   }
 }
