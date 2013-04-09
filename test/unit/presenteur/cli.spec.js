@@ -11,7 +11,7 @@ describe('Cli', function() {
 
     var sandboxedCli, cli, exitSpy, stdoutSpy, serverSpy;
 
-    function getGlobals(command) {
+    function startSandboxedCliWith(command) {
         exitSpy = sinon.spy();
         stdoutSpy = sinon.spy();
         serverListenSpy = sinon.spy();
@@ -20,29 +20,30 @@ describe('Cli', function() {
                 return {listen: serverListenSpy};
             }
         };
+
         var argv = ['node', 'presenteur'];
         if (command) argv.push(command);
-        var requires = {};
-        return {
-            process: {
-                argv: argv,
-                exit: exitSpy,
-                stdout: { write: stdoutSpy }
+
+        sandboxedCli = sandboxedModule.load(support.LIB + 'presenteur/cli', {
+            requires: {
+                './server': serverSpy
+            },
+            globals: {
+                process: {
+                    argv: argv,
+                    exit: exitSpy,
+                    stdout: { write: stdoutSpy }
+                }
             }
-        };
+        });
+        cli = sandboxedCli.exports;
+        cli.start();
     }
 
     describe('when no command is passed', function() {
 
         beforeEach(function() {
-            sandboxedCli = sandboxedModule.load(support.LIB + 'presenteur/cli', {
-                requires: {
-                    './server': serverSpy
-                },
-                globals: getGlobals()
-            });
-            cli = sandboxedCli.exports;
-            cli.start();
+            startSandboxedCliWith();
         });
 
         it('should print an error', function() {
@@ -58,14 +59,7 @@ describe('Cli', function() {
     describe('when started', function() {
 
         beforeEach(function() {
-            sandboxedCli = sandboxedModule.load(support.LIB + 'presenteur/cli', {
-                requires: {
-                    './server': serverSpy
-                },
-                globals: getGlobals('start')
-            });
-            cli = sandboxedCli.exports;
-            cli.start();
+            startSandboxedCliWith('start');
         });
 
         it('should print nothing', function() {
