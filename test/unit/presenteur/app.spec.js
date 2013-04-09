@@ -1,10 +1,7 @@
 var sinon = require('sinon'),
-    path = require('path'),
-    ROOT = path.resolve(__dirname + '/../../../'),
-    LIB = ROOT + '/lib/',
-    TEST = ROOT + '/test/',
-    app = require(LIB + 'presenteur/app'),
-    request = require('supertest');
+    request = require('supertest'),
+    support = require('../../support'),
+    app = require(support.LIB + 'presenteur/app');
 
 describe('App', function() {
 
@@ -16,7 +13,7 @@ describe('App', function() {
             write: sinon.spy()
         };
         _app = app.createApp({
-            directory: TEST + 'fixtures/presentations/valid/',
+            directory: support.TEST + 'fixtures/presentations/valid/',
             stdout: stdout,
             port: 3001
         });

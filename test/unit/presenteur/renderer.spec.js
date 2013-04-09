@@ -1,12 +1,8 @@
 var chai = require('chai'),
     expect = chai.expect,
-    chaiAsPromised = require('chai-as-promised'),
     sinon = require('sinon'),
-    path = require('path'),
-    ROOT = path.resolve(__dirname + '/../../../'),
-    LIB = ROOT + '/lib/',
-    TEST = ROOT + '/test/',
-    renderer = require(LIB + 'presenteur/renderer');
+    support = require('../../support'),
+    renderer = require(support.LIB + 'presenteur/renderer');
 
 chai.use(require('sinon-chai'));
 
@@ -25,7 +21,7 @@ describe('Renderer', function() {
         it('throws exception if no index.jade found.', function() {
             expect(function() {
                 rend = renderer.create({
-                    directory: TEST + 'fixtures/presentations/noindex/',
+                    directory: support.TEST + 'fixtures/presentations/noindex/',
                     stdout: stdout
                 });
             }).to.Throw('No index.jade file found.');
@@ -35,7 +31,7 @@ describe('Renderer', function() {
     describe('with index.jade file', function() {
         beforeEach(function() {
             rend = renderer.create({
-                directory: TEST + 'fixtures/presentations/valid/',
+                directory: support.TEST + 'fixtures/presentations/valid/',
                 stdout: stdout
             });
         });
