@@ -2,6 +2,7 @@
   "strict": false,
   "browser": true,
   "node": true,
+  "expr": true,
   "globals": {
   }
 }

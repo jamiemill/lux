@@ -9,7 +9,7 @@ chai.use(require('sinon-chai'));
 
 describe('Cli', function() {
 
-    var sandboxedCli, cli, exitSpy, stdoutSpy, serverSpy;
+    var sandboxedCli, cli, exitSpy, stdoutSpy, serverSpy, serverListenSpy;
 
     function startSandboxedCliWith(command) {
         exitSpy = sinon.spy();
