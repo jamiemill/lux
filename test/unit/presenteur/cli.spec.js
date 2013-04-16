@@ -9,16 +9,20 @@ chai.use(require('sinon-chai'));
 
 describe('Cli', function() {
 
-    var sandboxedCli, cli, exitSpy, stdoutSpy, serverSpy, serverListenSpy;
+    var sandboxedCli, cli, exitSpy, stdoutSpy, fakeServerModule, serverListenSpy,
+        fakeGeneratorModule;
 
     function startSandboxedCliWith(command) {
         exitSpy = sinon.spy();
         stdoutSpy = sinon.spy();
         serverListenSpy = sinon.spy();
-        serverSpy = {
+        fakeServerModule = {
             getServer: function() {
                 return {listen: serverListenSpy};
             }
+        },
+        fakeGeneratorModule = {
+            generate: sinon.spy()
         };
 
         var argv = ['node', 'presenteur'];
@@ -26,7 +30,8 @@ describe('Cli', function() {
 
         sandboxedCli = sandboxedModule.load(support.LIB + 'presenteur/cli', {
             requires: {
-                './server': serverSpy
+                './server': fakeServerModule,
+                './generator': fakeGeneratorModule
             },
             globals: {
                 process: {
@@ -50,7 +55,7 @@ describe('Cli', function() {
             expect(stdoutSpy).to.have.been.calledWith('No command specified.');
         });
 
-        it('should exit with an error if no command is passed', function() {
+        it('should exit with an error', function() {
             expect(exitSpy).to.have.been.calledWith(127);
         });
 
@@ -62,18 +67,20 @@ describe('Cli', function() {
             startSandboxedCliWith('start');
         });
 
-        it('should print nothing', function() {
-            expect(stdoutSpy).not.to.have.been.called;
-        });
-
-        it('should not exit', function() {
-            expect(exitSpy).not.to.have.been.called;
-        });
-
         it('should start the server', function() {
             expect(serverListenSpy).to.have.been.called;
         });
 
+    });
+
+    describe('when "generate" is called', function() {
+        beforeEach(function() {
+            startSandboxedCliWith('generate');
+        });
+
+        it('should start the generator', function() {
+            expect(fakeGeneratorModule.generate).to.have.been.called;
+        });
     });
 
 });

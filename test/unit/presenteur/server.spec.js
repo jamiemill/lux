@@ -24,7 +24,7 @@ describe('Server', function() {
             _server.listen(done);
         });
 
-        it('can listen for requests on a port', function(done) {
+        it('responds with content', function(done) {
             request('http://localhost:3001')
                 .get('/')
                 .expect(/<title>Presenteur<\/title>/, done);
