@@ -3,6 +3,13 @@
   "browser": true,
   "node": true,
   "expr": true,
+  "unused": true,
+  "undef": true,
   "globals": {
+      "describe": false,
+      "it": false,
+      "beforeEach": false,
+      "afterEach": false,
+      "jQuery": false
   }
 }

@@ -1,5 +1,7 @@
 (function($) {
 
+    var Presenteur = window.Presenteur = window.Presenteur || {};
+
     /**
      * This class controls a presentation with keyboard
      * events:
@@ -34,6 +36,6 @@
 
     });
 
-    window.KeyboardController = KeyboardController;
+    Presenteur.KeyboardController = KeyboardController;
 
 })(jQuery);

@@ -1,5 +1,7 @@
 (function($) {
 
+    var Presenteur = window.Presenteur = window.Presenteur || {};
+
     /**
      * This class can link a presentation to the URL
      * and:
@@ -44,6 +46,6 @@
 
     });
 
-    window.UrlBinder = UrlBinder;
+    Presenteur.UrlBinder = UrlBinder;
 
 })(jQuery);

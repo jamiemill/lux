@@ -1,5 +1,7 @@
 (function($){
 
+    var Presenteur = window.Presenteur = window.Presenteur || {};
+
     /**
      * This class represents the actual presentation.  It encapsulates the
      * logic for:
@@ -16,7 +18,7 @@
         this._init();
     };
 
-    $.extend(Presentation.prototype, MicroEvent.prototype, {
+    $.extend(Presentation.prototype, window.MicroEvent.prototype, {
 
         _$baseEl: null,
         _slideCount: null,
@@ -143,6 +145,6 @@
 
     });
 
-    window.Presentation = Presentation;
+    Presenteur.Presentation = Presentation;
 
 })(jQuery);

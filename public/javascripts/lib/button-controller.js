@@ -1,5 +1,7 @@
 (function($) {
 
+    var Presenteur = window.Presenteur = window.Presenteur || {};
+
     /**
      * This class controls a presentation with buttons.
      */
@@ -30,6 +32,6 @@
 
     });
 
-    window.ButtonController = ButtonController;
+    Presenteur.ButtonController = ButtonController;
 
 })(jQuery);

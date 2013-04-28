@@ -1,7 +1,6 @@
 var sinon = require('sinon'),
     chai = require('chai'),
     expect = chai.expect,
-    request = require('supertest'),
     sandboxedModule = require('sandboxed-module'),
     support = require('../../support');
 
