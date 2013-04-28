@@ -36,11 +36,15 @@ describe('Given I have a presentation running', function() {
 
         it('Then it should show me the first slide', function() {
             expect(browser.text('h1')).to.equal('Slide 1');
-            expect(browser.query('.slide:nth-child(1)').className).to.contain('current');
         });
 
-        it('And not the second slide', function() {
+        it('And apply the initial state', function() {
+            expect(browser.query('.slide:nth-child(1)').className).to.contain('current');
             expect(browser.query('.slide:nth-child(2)').className).to.contain('future');
+        });
+
+        it('And load the styles', function() {
+            expect(browser.query('link[href="stylesheets/style.css"]')).to.be.ok;
         });
 
     });
