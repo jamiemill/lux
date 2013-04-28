@@ -27,4 +27,10 @@ describe('App', function() {
             .expect(/<title>Presenteur<\/title>/, done);
     });
 
+    it('serves the scripts', function(done) {
+        request(_app.app)
+            .get('/javascripts/lib/presentation.js')
+            .expect(200, done);
+    });
+
 });
