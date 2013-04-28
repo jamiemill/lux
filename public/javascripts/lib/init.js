@@ -6,7 +6,7 @@
         //$('code:not(.ugly),pre:not(.ugly)').addClass('prettyprint');
         //prettyPrint();
 
-        var presentation = new Presenteur.Presentation({
+        new Presenteur.Presentation({
             baseEl: $('.presentation')
         });
 

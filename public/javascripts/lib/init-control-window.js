@@ -6,12 +6,12 @@
 
         var presentation = window.parentWindowPresentation;
 
-        var buttonController = new Presenteur.ButtonController({
+        new Presenteur.ButtonController({
             rootElement: $('.button-controller'),
             presentation: presentation
         });
 
-        var keyboardController = new Presenteur.KeyboardController({
+        new Presenteur.KeyboardController({
             presentation: presentation
         });
 
