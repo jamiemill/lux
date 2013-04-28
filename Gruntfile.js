@@ -16,9 +16,10 @@ module.exports = function(grunt) {
         cafemocha: {
             options: {
                 ui: 'bdd',
-                reporter: 'dot'
+                reporter: 'dot',
+                ignoreLeaks: true // zombie seems to leak
             },
-            src: 'test/unit/**/*.js'
+            src: ['test/unit/**/*.js', 'test/end2end/**/*.js']
         },
         // NOTE: need to start karma server first in
         // separate window with `grunt karma:unit`
