@@ -8,7 +8,7 @@ describe('Given I have a presentation running', function() {
 
     var child;
 
-    beforeEach(function(done) {
+    before(function(done) {
         var command = support.ROOT + 'bin/presenteur';
         child = spawn(command, ['start'], {
             cwd: support.TEST + 'fixtures/presentations/valid',
@@ -21,7 +21,7 @@ describe('Given I have a presentation running', function() {
         });
     });
 
-    afterEach(function() {
+    after(function() {
         child.kill();
     });
 
@@ -29,13 +29,19 @@ describe('Given I have a presentation running', function() {
 
         var browser;
 
-        beforeEach(function(done) {
+        before(function(done) {
             browser = new Browser();
+            browser.debug = true;
+            browser.loadCSS = true;
             browser.visit('http://localhost:3000', done);
         });
 
         it('Then it should show me the first slide', function() {
             expect(browser.text('h1')).to.equal('Slide 1');
+            // neither of these seem to work. doesn't seem to load styles. try phantom?
+            //console.log(browser.window.getComputedStyle(browser.document.querySelector('.slide:nth-child(2)')));
+            //console.log(browser.evaluate("$('.slide:nth-child(2)').is(':visible')"));
+
         });
 
         it('And apply the initial state', function() {
