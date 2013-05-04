@@ -1,4 +1,4 @@
-var Browser = require('zombie'),
+var phantomProxy = require('phantom-proxy'),
     spawn = require('child_process').spawn,
     chai = require('chai'),
     expect = chai.expect,
@@ -27,30 +27,60 @@ describe('Given I have a presentation running', function() {
 
     describe('When I visit in a browser', function() {
 
-        var browser;
+        var proxy, page;
 
         before(function(done) {
-            browser = new Browser();
-            browser.debug = true;
-            browser.loadCSS = true;
-            browser.visit('http://localhost:3000', done);
+            this.timeout(10000);
+            phantomProxy.create({}, function(p) {
+                proxy = p;
+                page = p.page;
+                page.open('http://localhost:3000', function() {
+                    done();
+                });
+            });
         });
 
-        it('Then it should show me the first slide', function() {
-            expect(browser.text('h1')).to.equal('Slide 1');
-            // neither of these seem to work. doesn't seem to load styles. try phantom?
-            //console.log(browser.window.getComputedStyle(browser.document.querySelector('.slide:nth-child(2)')));
-            //console.log(browser.evaluate("$('.slide:nth-child(2)').is(':visible')"));
-
+        after(function(done) {
+            proxy.end(function() { done(); });
         });
 
-        it('And apply the initial state', function() {
-            expect(browser.query('.slide:nth-child(1)').className).to.contain('current');
-            expect(browser.query('.slide:nth-child(2)').className).to.contain('future');
+        it('The first slide text should be present', function(done) {
+            page.evaluate(
+                function() {
+                    return window.$('h1:visible').text();
+                },
+                function(text) {
+                    support.check(done, function() {
+                        expect(text).to.equal('Slide 1');
+                    });
+                }
+            );
         });
 
-        it('And load the styles', function() {
-            expect(browser.query('link[href="stylesheets/style.css"]')).to.be.ok;
+        it('And show the first slide', function(done) {
+            page.evaluate(
+                function() {
+                    return window.$('.slide:nth-child(1)').is(':visible');
+                },
+                function(visible) {
+                    support.check(done, function() {
+                        expect(visible).to.equal('true');
+                    });
+                }
+            );
+        });
+
+        it('And hide the second slide', function(done) {
+            page.evaluate(
+                function() {
+                    return window.$('.slide:nth-child(2)').is(':visible');
+                },
+                function(visible) {
+                    support.check(done, function() {
+                        expect(visible).to.equal('false');
+                    });
+                }
+            );
         });
 
     });
