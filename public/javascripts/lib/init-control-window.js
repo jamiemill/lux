@@ -1,3 +1,4 @@
+/*
 (function($) {
 
     var Presenteur = window.Presenteur = window.Presenteur || {};
@@ -31,3 +32,4 @@
     });
 
 })(jQuery);
+*/

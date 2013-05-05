@@ -16,13 +16,15 @@ module.exports = function(grunt) {
         cafemocha: {
             options: {
                 ui: 'bdd',
-                reporter: 'dot',
-                ignoreLeaks: true // zombie seems to leak
+                reporter: 'spec'
             },
-            src: ['test/unit/**/*.js', 'test/end2end/**/*.js']
+            unit: {
+                src: ['test/unit/**/*.js']
+            },
+            end2end: {
+                src: ['test/end2end/**/*.js']
+            }
         },
-        // NOTE: need to start karma server first in
-        // separate window with `grunt karma:unit`
         karma: {
             unit: {
                 configFile: 'karma.conf.js'
@@ -30,8 +32,12 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['<%= jshint.all %>'],
-            tasks: ['jshint', 'cafemocha', 'karma:unit:run'],
+            tasks: ['default'],
             options: {interrupt: true}
+        },
+        test: {
+            serverside: {},
+            clientside: {}
         }
     });
 
@@ -40,6 +46,21 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['jshint', 'cafemocha', 'karma:unit:run']);
+    grunt.registerTask('karmaserver', ['karma:unit']);
+
+    grunt.registerMultiTask('test', function() {
+        if (this.target === 'serverside') {
+            grunt.task.run('cafemocha');
+        }
+        else if (this.target === 'clientside') {
+            grunt.task.run('karma:unit:run');
+        }
+        else {
+            throw 'Unknown test task';
+        }
+    });
+
+    grunt.registerTask('default', ['jshint', 'test']);
+
 
 };
