@@ -31,13 +31,13 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.all %>'],
+            files: ['<%= jshint.all %>', 'lib/**/*.jade', 'lib/**/*.less'],
             tasks: ['default'],
             options: {interrupt: true}
         },
         test: {
-            serverside: {},
-            clientside: {}
+            clientside: {},
+            serverside: {}
         }
     });
 

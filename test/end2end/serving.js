@@ -46,7 +46,7 @@ describe('Serving a presentation', function() {
                 proxy.end(function() { done(); });
             });
 
-            it('The first slide text should be present', function(done) {
+            it('Then the first slide text should be present', function(done) {
                 page.evaluate(
                     function() {
                         return window.$('h1:visible').text();
@@ -59,7 +59,7 @@ describe('Serving a presentation', function() {
                 );
             });
 
-            it('And show the first slide', function(done) {
+            it('And the first slide should be shown', function(done) {
                 page.evaluate(
                     function() {
                         return window.$('.slide:nth-child(1)').is(':visible');
@@ -72,7 +72,7 @@ describe('Serving a presentation', function() {
                 );
             });
 
-            it('And hide the second slide', function(done) {
+            it('And the second slide should be hidden', function(done) {
                 page.evaluate(
                     function() {
                         return window.$('.slide:nth-child(2)').is(':visible');
@@ -83,6 +83,42 @@ describe('Serving a presentation', function() {
                         });
                     }
                 );
+            });
+
+            describe('When I press the spacebar', function() {
+
+                before(function(done) {
+                    var SPACE = 32;
+                    page.sendEvent({event: 'keypress', keys: SPACE}, function() {
+                        done();
+                    });
+                });
+
+                it('Then the second slide is shown', function(done) {
+                    page.evaluate(
+                        function() {
+                            return window.$('.slide:nth-child(2)').is(':visible');
+                        },
+                        function(visible) {
+                            support.check(done, function() {
+                                expect(visible).to.equal('true');
+                            });
+                        }
+                    );
+                });
+
+                it('And the first is hidden', function(done) {
+                    page.evaluate(
+                        function() {
+                            return window.$('.slide:nth-child(1)').is(':visible');
+                        },
+                        function(visible) {
+                            support.check(done, function() {
+                                expect(visible).to.equal('false');
+                            });
+                        }
+                    );
+                });
             });
 
         });

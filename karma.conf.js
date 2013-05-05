@@ -14,6 +14,8 @@ files = [
   'public/components/jquery.ba-bbq.min.js',
   'public/components/chai.js',
   'public/components/chai-jquery.js',
+  'public/components/sinon-1.6.0.js',
+  'public/components/sinon-chai.js',
   'public/components/microevent.js',
   'public/javascripts/lib/**/*.js',
   'test/public/**/*.js'

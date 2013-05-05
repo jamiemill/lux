@@ -65,6 +65,7 @@ describe('Renderer', function() {
             rend.getIndexPage()
                 .then(function(html) {
                     expect(html).to.contain('<script src="javascripts/lib/presentation.js"></script>');
+                    expect(html).to.contain('<script src="javascripts/lib/keyboard-controller.js"></script>');
                     done();
                 }, done)
             .end();
