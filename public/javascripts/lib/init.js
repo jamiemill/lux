@@ -6,28 +6,28 @@
         //$('code:not(.ugly),pre:not(.ugly)').addClass('prettyprint');
         //prettyPrint();
 
-        new Presenteur.Presentation({
+        new Presenteur.Slideshow({
             baseEl: $('.presentation')
         });
 
         //$(window).resize(function() {
-            //presentation.scaleToFit();
+            //slideshow.scaleToFit();
         //});
 
         //var keyboardController = new Presenteur.KeyboardController({
-            //presentation: presentation
+            //slideshow: slideshow
         //});
 
         //var swipeController = new Presenteur.SwipeController({
-            //presentation: presentation
+            //slideshow: slideshow
         //});
 
         //var urlBinder = new Presenteur.UrlBinder({
-            //presentation: presentation,
+            //slideshow: slideshow,
             //baseEl: $('.presentation')
         //});
 
-        // Summon the Popup Controller, for controlling presentation on separate screen
+        // Summon the Popup Controller, for controlling slideshow on separate screen
         // of same computer.
         // TODO: move this into a control object. Could include chapter navigation.
 
@@ -38,7 +38,7 @@
                     //'./popup-controller.html',
                     //'pres-popup-controller',
                     //'height=200,width=300,status=no,toolbar=no,menu=no,location=no,dependent=yes'
-                //).parentWindowPresentation = presentation;
+                //).parentWindowSlideshow = slideshow;
             //});
 
         // Remote Control for controlling/being controlled over a network.
@@ -47,12 +47,12 @@
         //var isMaster = window.location.pathname.indexOf('master') !== -1;
         //var socket = io.connect();
         //if (isMaster) {
-            //presentation.bind('slide-changed', function(data) {
+            //slideshow.bind('slide-changed', function(data) {
                 //socket.emit('master-slide-changed', data);
             //});
         //} else {
             //socket.on('slide-change', function (data) {
-                //presentation.showSlide(data.currentSlide);
+                //slideshow.showSlide(data.currentSlide);
             //});
         //}
 

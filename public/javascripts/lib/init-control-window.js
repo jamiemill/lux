@@ -5,27 +5,27 @@
 
     $(document).ready(function() {
 
-        var presentation = window.parentWindowPresentation;
+        var slideshow = window.parentWindowSlideshow;
 
         new Presenteur.ButtonController({
             rootElement: $('.button-controller'),
-            presentation: presentation
+            slideshow: slideshow
         });
 
         new Presenteur.KeyboardController({
-            presentation: presentation
+            slideshow: slideshow
         });
 
         renderProgress();
-        presentation.bind('slide-changed', renderProgress);
+        slideshow.bind('slide-changed', renderProgress);
 
         function renderProgress() {
-            $('.current-slide-number').text(presentation.getCurrentSlide() + 1);
-            $('.total-slide-count').text(presentation.getSlideCount());
+            $('.current-slide-number').text(slideshow.getCurrentSlide() + 1);
+            $('.total-slide-count').text(slideshow.getSlideCount());
         }
 
         $('.close').click(function() {
-            presentation.unbind('slide-changed', renderProgress);
+            slideshow.unbind('slide-changed', renderProgress);
             window.close();
         });
 

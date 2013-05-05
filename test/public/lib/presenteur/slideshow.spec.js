@@ -3,9 +3,9 @@
 
     var Presenteur = window.Presenteur = window.Presenteur || {};
 
-    describe('Presentation', function() {
+    describe('Slideshow', function() {
 
-        var presentation,
+        var slideshow,
             html = [
                 '<div>',
                 '  <div class="slide">Slide 0</div>',
@@ -30,7 +30,7 @@
             };
 
         beforeEach(function() {
-            presentation = new Presenteur.Presentation({
+            slideshow = new Presenteur.Slideshow({
                 baseEl: $htmlFixture
             });
         });
@@ -38,11 +38,11 @@
         describe('Initialisation', function() {
 
             it('should recognise two slides', function() {
-                expect(presentation.getSlideCount()).to.equal(4);
+                expect(slideshow.getSlideCount()).to.equal(4);
             });
 
             it('should start on slide 0', function() {
-                expect(presentation.getCurrentSlide()).to.equal(0);
+                expect(slideshow.getCurrentSlide()).to.equal(0);
             });
 
             it('should apply the correct starting classes', function() {
@@ -67,9 +67,9 @@
         describe('Navigation', function() {
 
             it('advances when next is called', function() {
-                presentation.next();
+                slideshow.next();
 
-                expect(presentation.getCurrentSlide()).to.equal(1);
+                expect(slideshow.getCurrentSlide()).to.equal(1);
 
                 expect(getTexts('.current')).to.equal('Slide 1');
                 expect(getTexts('.past')).to.equal('Slide 0');
@@ -77,10 +77,10 @@
             });
 
             it('goes back when previous is called', function() {
-                presentation.next();
-                presentation.previous();
+                slideshow.next();
+                slideshow.previous();
 
-                expect(presentation.getCurrentSlide()).to.equal(0);
+                expect(slideshow.getCurrentSlide()).to.equal(0);
 
                 expect(getTexts('.current')).to.equal('Slide 0');
                 expect(getTexts('.past')).to.equal('');
@@ -88,27 +88,27 @@
             });
 
             it('goes no further back than the first slide', function() {
-                presentation.previous();
-                presentation.previous();
+                slideshow.previous();
+                slideshow.previous();
 
-                expect(presentation.getCurrentSlide()).to.equal(0);
+                expect(slideshow.getCurrentSlide()).to.equal(0);
             });
 
             it('goes no further forward than the last slide', function() {
-                presentation.next();
-                presentation.next();
-                presentation.next();
-                presentation.next();
-                presentation.next();
-                presentation.next();
+                slideshow.next();
+                slideshow.next();
+                slideshow.next();
+                slideshow.next();
+                slideshow.next();
+                slideshow.next();
 
-                expect(presentation.getCurrentSlide()).to.equal(3);
+                expect(slideshow.getCurrentSlide()).to.equal(3);
             });
 
             it('can show a given slide', function() {
-                presentation.showSlide(2);
+                slideshow.showSlide(2);
 
-                expect(presentation.getCurrentSlide()).to.equal(2);
+                expect(slideshow.getCurrentSlide()).to.equal(2);
 
                 expect(getTexts('.current')).to.equal('Slide 2');
                 expect(getTexts('.past')).to.equal('Slide 0, Slide 1');

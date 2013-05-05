@@ -5,15 +5,15 @@
 
     describe('KeyboardController', function() {
 
-        var keyboardController, fakePresentation;
+        var keyboardController, fakeSlideshow;
 
         beforeEach(function() {
-            fakePresentation = {
+            fakeSlideshow = {
                 next: sinon.spy(),
                 previous: sinon.spy()
             };
             keyboardController = new Presenteur.KeyboardController({
-                presentation: fakePresentation
+                slideshow: fakeSlideshow
             });
         });
 
@@ -24,8 +24,8 @@
                 $('body').trigger(jQuery.Event('keyup', {keyCode: SPACE}));
             });
 
-            it('advances the presentation', function() {
-                expect(fakePresentation.next).to.have.been.called;
+            it('advances the slideshow', function() {
+                expect(fakeSlideshow.next).to.have.been.called;
             });
         });
 

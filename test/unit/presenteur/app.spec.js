@@ -29,7 +29,7 @@ describe('App', function() {
 
     it('serves the scripts', function(done) {
         request(_app.app)
-            .get('/javascripts/lib/presentation.js')
+            .get('/javascripts/lib/slideshow.js')
             .expect(200, done);
     });
 

@@ -3,7 +3,7 @@
     var Presenteur = window.Presenteur = window.Presenteur || {};
 
     /**
-     * This class represents the actual presentation.  It encapsulates the
+     * This class represents the actual slideshow.  It encapsulates the
      * logic for:
      * - setting/maintaining the states of all slides.
      * - showing any given slide.
@@ -13,12 +13,12 @@
      * potentially be several on a page at once.
      */
 
-    var Presentation = function(options) {
+    var Slideshow = function(options) {
         this._$baseEl = $(options.baseEl);
         this._init();
     };
 
-    $.extend(Presentation.prototype, window.MicroEvent.prototype, {
+    $.extend(Slideshow.prototype, window.MicroEvent.prototype, {
 
         _$baseEl: null,
         _slideCount: null,
@@ -145,6 +145,6 @@
 
     });
 
-    Presenteur.Presentation = Presentation;
+    Presenteur.Slideshow = Slideshow;
 
 })(jQuery);
