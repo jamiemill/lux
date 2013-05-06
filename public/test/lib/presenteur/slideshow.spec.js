@@ -1,10 +1,9 @@
 define([
     'jQuery',
-    'chai'
-], function($, chai) {
+    'chai',
+    'lib/slideshow'
+], function($, chai, Slideshow) {
     var expect = chai.expect;
-
-    var Presenteur = window.Presenteur = window.Presenteur || {};
 
     describe('Slideshow', function() {
 
@@ -33,7 +32,7 @@ define([
             };
 
         beforeEach(function() {
-            slideshow = new Presenteur.Slideshow({
+            slideshow = new Slideshow({
                 baseEl: $htmlFixture
             });
         });

@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Mon Apr 01 2013 17:33:35 GMT+0100 (BST)
+// Generated on Mon May 06 2013 14:23:09 GMT+0100 (BST)
 
 
 // base path, that will be used to resolve files and exclude
@@ -10,13 +10,11 @@ basePath = '';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  'public/components/require.js',
-  'public/lib/configure.js',
-  'public/test/test_runner.js',
-  {
-      pattern: 'public/**/*.js',
-      included: false
-  }
+  REQUIRE,
+  REQUIRE_ADAPTER,
+  'public/lib/requirejs-config.js',
+  'public/test/main-test.js',
+  {pattern: 'public/**/*.js', included: false}
 ];
 
 

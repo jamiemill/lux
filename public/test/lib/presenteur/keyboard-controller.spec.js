@@ -1,11 +1,10 @@
 define([
     'jQuery',
     'chai',
-    'sinon'
-], function($, chai, sinon) {
+    'sinon',
+    'lib/keyboard-controller'
+], function($, chai, sinon, KeyboardController) {
     var expect = chai.expect;
-
-    var Presenteur = window.Presenteur = window.Presenteur || {};
 
     describe('KeyboardController', function() {
 
@@ -16,7 +15,7 @@ define([
                 next: sinon.spy(),
                 previous: sinon.spy()
             };
-            keyboardController = new Presenteur.KeyboardController({
+            keyboardController = new KeyboardController({
                 slideshow: fakeSlideshow
             });
         });
