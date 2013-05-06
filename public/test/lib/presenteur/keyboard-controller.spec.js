@@ -1,4 +1,8 @@
-(function($, chai, sinon) {
+define([
+    'jQuery',
+    'chai',
+    'sinon'
+], function($, chai, sinon) {
     var expect = chai.expect;
 
     var Presenteur = window.Presenteur = window.Presenteur || {};
@@ -31,4 +35,4 @@
 
     });
 
-})(jQuery, window.chai, window.sinon);
+});

@@ -12,6 +12,9 @@
       "afterEach": false,
       "before": false,
       "after": false,
-      "jQuery": false
+      "jQuery": false,
+      "requirejs": false,
+      "define": false,
+      "require": false
   }
 }

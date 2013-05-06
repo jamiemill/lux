@@ -1,6 +1,6 @@
 (function($) {
 
-    var Presenteur = window.Presenteur = window.Presenteur || {};
+    var Presenteur = window.Presenteur;
 
     /**
      * This class controls a slideshow with

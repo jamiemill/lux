@@ -45,8 +45,8 @@ describe('Renderer', function() {
         it('can return the index html', function(done) {
             rend.getIndexPage()
                 .then(function(html) {
-                    expect(html).to.contain('<div class="slide"><h1>Slide 1</h1></div>');
-                    expect(html).to.contain('<div class="slide"><h2>Slide 2</h2></div>');
+                    expect(html).to.contain('<h1>Slide 1</h1>');
+                    expect(html).to.contain('<h2>Slide 2</h2>');
                     done();
                 }, done)
             .end();
@@ -64,8 +64,9 @@ describe('Renderer', function() {
         it('includes the assets', function(done) {
             rend.getIndexPage()
                 .then(function(html) {
-                    expect(html).to.contain('<script src="javascripts/lib/slideshow.js"></script>');
-                    expect(html).to.contain('<script src="javascripts/lib/keyboard-controller.js"></script>');
+                    expect(html).to.contain('<script src="components/require.js"></script>');
+                    expect(html).to.contain('<script src="lib/configure.js"></script>');
+                    expect(html).to.contain('<script src="lib/init.js"></script>');
                     done();
                 }, done)
             .end();

@@ -1,7 +1,7 @@
 /*
 (function($) {
 
-    var Presenteur = window.Presenteur = window.Presenteur || {};
+    var Presenteur = window.Presenteur;
 
     $(document).ready(function() {
 

@@ -1,6 +1,6 @@
 (function($) {
 
-    var Presenteur = window.Presenteur = window.Presenteur || {};
+    var Presenteur = window.Presenteur;
 
     /**
      * This class can link a slideshow to the URL

@@ -10,15 +10,13 @@ basePath = '';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  'public/components/jquery-1.8.3.min.js',
-  'public/components/jquery.ba-bbq.min.js',
-  'public/components/chai.js',
-  'public/components/chai-jquery.js',
-  'public/components/sinon-1.6.0.js',
-  'public/components/sinon-chai.js',
-  'public/components/microevent.js',
-  'public/javascripts/lib/**/*.js',
-  'test/public/**/*.js'
+  'public/components/require.js',
+  'public/lib/configure.js',
+  'public/test/test_runner.js',
+  {
+      pattern: 'public/**/*.js',
+      included: false
+  }
 ];
 
 
@@ -62,7 +60,7 @@ autoWatch = false;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome', 'Firefox', 'Safari'];
+browsers = ['Chrome'];
 
 
 // If browser does not capture in given timeout [ms], kill it

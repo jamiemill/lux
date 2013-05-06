@@ -1,6 +1,4 @@
-(function($){
-
-    var Presenteur = window.Presenteur = window.Presenteur || {};
+define(['jQuery', 'MicroEvent'], function($, MicroEvent) {
 
     /**
      * This class represents the actual slideshow.  It encapsulates the
@@ -18,7 +16,7 @@
         this._init();
     };
 
-    $.extend(Slideshow.prototype, window.MicroEvent.prototype, {
+    $.extend(Slideshow.prototype, MicroEvent.prototype, {
 
         _$baseEl: null,
         _slideCount: null,
@@ -145,6 +143,6 @@
 
     });
 
-    Presenteur.Slideshow = Slideshow;
+    return Slideshow;
 
-})(jQuery);
+});

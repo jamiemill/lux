@@ -1,6 +1,4 @@
-(function($) {
-
-    var Presenteur = window.Presenteur = window.Presenteur || {};
+define(['jQuery'], function($) {
 
     /**
      * This class controls a slideshow with keyboard
@@ -36,6 +34,6 @@
 
     });
 
-    Presenteur.KeyboardController = KeyboardController;
+    return KeyboardController;
 
-})(jQuery);
+});

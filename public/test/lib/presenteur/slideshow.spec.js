@@ -1,4 +1,7 @@
-(function($, chai) {
+define([
+    'jQuery',
+    'chai'
+], function($, chai) {
     var expect = chai.expect;
 
     var Presenteur = window.Presenteur = window.Presenteur || {};
@@ -119,4 +122,4 @@
 
     });
 
-})(jQuery, window.chai);
+});
