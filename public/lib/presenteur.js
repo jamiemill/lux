@@ -1,12 +1,16 @@
 define([
     'jQuery',
-    'lib/slideshow'
-], function($, Slideshow) {
+    'lib/slideshow',
+    'lib/keyboard-controller'
+], function($, Slideshow, KeyboardController) {
 
     var Presenteur = {
         init: function() {
-            window.slideshow = new Slideshow({
+            var slideshow = new Slideshow({
                 baseEl: $('.presentation:first')
+            });
+            new KeyboardController({
+                slideshow: slideshow
             });
         }
     };
