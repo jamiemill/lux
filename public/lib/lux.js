@@ -4,7 +4,7 @@ define([
     'lib/keyboard-controller'
 ], function($, Slideshow, KeyboardController) {
 
-    var Presenteur = {
+    var Lux = {
         init: function() {
             var slideshow = new Slideshow({
                 baseEl: $('.presentation:first')
@@ -15,6 +15,6 @@ define([
         }
     };
 
-    return Presenteur;
+    return Lux;
 
 });

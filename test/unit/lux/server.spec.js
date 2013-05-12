@@ -1,7 +1,7 @@
 var sinon = require('sinon'),
     request = require('supertest'),
     support = require('../../support'),
-    server = require(support.LIB + 'presenteur/server');
+    server = require(support.LIB + 'lux/server');
 
 describe('Server', function() {
 
@@ -27,7 +27,7 @@ describe('Server', function() {
         it('responds with content', function(done) {
             request('http://localhost:3001')
                 .get('/')
-                .expect(/<title>Presenteur<\/title>/, done);
+                .expect(/<title>Lux<\/title>/, done);
         });
 
         afterEach(function(done) {

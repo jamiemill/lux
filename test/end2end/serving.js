@@ -11,7 +11,7 @@ describe('Serving a presentation', function() {
         var child;
 
         before(function(done) {
-            var command = support.ROOT + 'bin/presenteur';
+            var command = support.ROOT + 'bin/lux';
             child = spawn(command, ['start'], {
                 cwd: support.TEST + 'fixtures/presentations/valid',
                 stdio: ['pipe', 'pipe', process.stderr]

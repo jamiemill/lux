@@ -24,10 +24,10 @@ describe('Cli', function() {
             generate: sinon.spy()
         };
 
-        var argv = ['node', 'presenteur'];
+        var argv = ['node', 'lux'];
         if (command) argv.push(command);
 
-        sandboxedCli = sandboxedModule.load(support.LIB + 'presenteur/cli', {
+        sandboxedCli = sandboxedModule.load(support.LIB + 'lux/cli', {
             requires: {
                 './server': fakeServerModule,
                 './generator': fakeGeneratorModule

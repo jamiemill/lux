@@ -1,7 +1,7 @@
 var sinon = require('sinon'),
     request = require('supertest'),
     support = require('../../support'),
-    app = require(support.LIB + 'presenteur/app');
+    app = require(support.LIB + 'lux/app');
 
 describe('App', function() {
 
@@ -24,7 +24,7 @@ describe('App', function() {
             .get('/')
             .expect(200)
             .expect('Content-Type', /text\/html/)
-            .expect(/<title>Presenteur<\/title>/, done);
+            .expect(/<title>Lux<\/title>/, done);
     });
 
     it('serves the scripts', function(done) {

@@ -2,7 +2,7 @@ var chai = require('chai'),
     expect = chai.expect,
     sinon = require('sinon'),
     support = require('../../support'),
-    renderer = require(support.LIB + 'presenteur/renderer');
+    renderer = require(support.LIB + 'lux/renderer');
 
 chai.use(require('sinon-chai'));
 
@@ -55,7 +55,7 @@ describe('Renderer', function() {
         it('wraps the index page in the layout', function(done) {
             rend.getIndexPage()
                 .then(function(html) {
-                    expect(html).to.contain('<title>Presenteur</title>');
+                    expect(html).to.contain('<title>Lux</title>');
                     done();
                 }, done)
             .end();

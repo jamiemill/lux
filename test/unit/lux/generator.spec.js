@@ -4,7 +4,7 @@ var sinon = require('sinon'),
     temp = require('temp'),
     fs = require('fs'),
     support = require('../../support'),
-    generator = require(support.LIB + 'presenteur/generator');
+    generator = require(support.LIB + 'lux/generator');
 
 chai.use(require('sinon-chai'));
 

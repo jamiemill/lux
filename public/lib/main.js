@@ -1,10 +1,10 @@
 require([
     'jQuery',
-    'lib/presenteur'
-], function($, Presenteur) {
+    'lib/lux'
+], function($, Lux) {
 
     $(document).ready(function() {
-        Presenteur.init();
+        Lux.init();
     });
 
 });
