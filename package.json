@@ -1,7 +1,7 @@
 {
   "name": "lux",
   "description": "An HTML5 presentation framework with the goals of simplicity, good looks, proper syntax highlighting, and remote control.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./lib/lux/presentation.js",
   "bin": {
     "lux": "./bin/lux"
