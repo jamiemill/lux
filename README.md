@@ -1,4 +1,4 @@
-# Presenteur
+# Lux
 
 An HTML5 presentation framework, with the goals:
 
@@ -10,7 +10,7 @@ An HTML5 presentation framework, with the goals:
 
 ## Demo & Docs
 
-<http://jamiemill.github.com/presenteur/>
+<http://jamiemill.github.com/lux/>
 
 ## Features
 
@@ -31,19 +31,19 @@ node.js
 
 ## Install
 
-    npm install -g presenteur
+    npm install -g lux
 
 ## Usage
 
 ### Generate a skeleton presentation
 
-    presenteur generate
+    lux generate
 
 WARNING: this overwrites files in the current directory.
 
 ### Serve the presentation
 
-    presenteur
+    lux
 
 then visit `http://<your computer>:3000`
 
@@ -52,7 +52,7 @@ then visit `http://<your computer>:3000`
 
 ### Export to static HTML (not implemented)
 
-    presenteur export
+    lux export
 
 ## Development
 
@@ -68,7 +68,7 @@ Or if you want to watch for file changes and automatically run all the above, do
 
     grunt watch
 
-To do local development while testing with the global `presenteur` command, run `npm link` to make your checked-out copy become the global binary.
+To do local development while testing with the global `lux` command, run `npm link` to make your checked-out copy become the global binary.
 
 ## License
 
