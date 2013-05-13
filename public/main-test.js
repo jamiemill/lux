@@ -23,9 +23,9 @@ require(['isolate', 'sinon'], function(isolate, sinon) {
     ]);
 
     require([
-        'test/lib/lux.spec',
-        'test/lib/slideshow.spec',
-        'test/lib/keyboard-controller.spec'
+        'test/lux.spec',
+        'test/slideshow.spec',
+        'test/keyboard-controller.spec'
     ], function(){
         window.__karma__.start();
     });

@@ -65,8 +65,8 @@ describe('Renderer', function() {
             rend.getIndexPage()
                 .then(function(html) {
                     expect(html).to.contain('<script src="components/require.js"></script>');
-                    expect(html).to.contain('<script src="lib/requirejs-config.js"></script>');
-                    expect(html).to.contain('<script src="lib/main.js"></script>');
+                    expect(html).to.contain('<script src="requirejs-config.js"></script>');
+                    expect(html).to.contain('<script src="main.js"></script>');
                     done();
                 }, done)
             .end();

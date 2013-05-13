@@ -12,8 +12,8 @@ files = [
   MOCHA_ADAPTER,
   REQUIRE,
   REQUIRE_ADAPTER,
-  'public/lib/requirejs-config.js',
-  'public/test/main-test.js',
+  'public/requirejs-config.js',
+  'public/main-test.js',
   {pattern: 'public/**/*.js', included: false}
 ];
 
