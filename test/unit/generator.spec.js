@@ -3,8 +3,8 @@ var sinon = require('sinon'),
     expect = chai.expect,
     temp = require('temp'),
     fs = require('fs'),
-    support = require('../../support'),
-    generator = require(support.LIB + 'lux/generator');
+    support = require('../support'),
+    generator = require(support.LIB + 'generator');
 
 chai.use(require('sinon-chai'));
 

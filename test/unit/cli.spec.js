@@ -2,7 +2,7 @@ var sinon = require('sinon'),
     chai = require('chai'),
     expect = chai.expect,
     sandboxedModule = require('sandboxed-module'),
-    support = require('../../support');
+    support = require('../support');
 
 chai.use(require('sinon-chai'));
 
@@ -27,7 +27,7 @@ describe('Cli', function() {
         var argv = ['node', 'lux'];
         if (command) argv.push(command);
 
-        sandboxedCli = sandboxedModule.load(support.LIB + 'lux/cli', {
+        sandboxedCli = sandboxedModule.load(support.LIB + 'cli', {
             requires: {
                 './server': fakeServerModule,
                 './generator': fakeGeneratorModule

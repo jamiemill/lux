@@ -1,7 +1,7 @@
 var sinon = require('sinon'),
     request = require('supertest'),
-    support = require('../../support'),
-    server = require(support.LIB + 'lux/server');
+    support = require('../support'),
+    server = require(support.LIB + 'server');
 
 describe('Server', function() {
 

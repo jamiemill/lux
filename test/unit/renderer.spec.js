@@ -1,8 +1,8 @@
 var chai = require('chai'),
     expect = chai.expect,
     sinon = require('sinon'),
-    support = require('../../support'),
-    renderer = require(support.LIB + 'lux/renderer');
+    support = require('../support'),
+    renderer = require(support.LIB + 'renderer');
 
 chai.use(require('sinon-chai'));
 
@@ -38,7 +38,7 @@ describe('Renderer', function() {
 
         it('says that things are ok', function() {
             expect(stdout.write.callCount).to.equal(2);
-            expect(stdout.write.getCall(0).args[0]).to.equal('- Found /Users/jamiemill/Work/presenteur/src/test/fixtures/presentations/valid/index.jade.\n');
+            expect(stdout.write.getCall(0).args[0]).to.equal('- Found /Users/jamiemill/Work/lux/src/test/fixtures/presentations/valid/index.jade.\n');
             expect(stdout.write.getCall(1).args[0]).to.equal('- Serving extra assets from public/.\n');
         });
 
