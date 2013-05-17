@@ -8,7 +8,8 @@ define([
 
     var expect = chai.expect,
         MockSlideshow = Lux.dependencies['lib/slideshow'],
-        MockKeyboardController = Lux.dependencies['lib/keyboard-controller'];
+        MockKeyboardController = Lux.dependencies['lib/keyboard-controller'],
+        MockAutosizer = Lux.dependencies['lib/autosizer'];
 
     chai.use(sinonChai);
 
@@ -40,6 +41,15 @@ define([
 
             expect(MockKeyboardController).to.have.been.calledWithNew;
             var passedSlideshow = MockKeyboardController.lastCall.args[0].slideshow;
+            expect(passedSlideshow).to.equal(newSlideshow);
+        });
+
+        it('connects an autosizer', function() {
+            Lux.init();
+            var newSlideshow = MockSlideshow.lastCall.thisValue;
+
+            expect(MockAutosizer).to.have.been.calledWithNew;
+            var passedSlideshow = MockAutosizer.lastCall.args[0].slideshow;
             expect(passedSlideshow).to.equal(newSlideshow);
         });
 

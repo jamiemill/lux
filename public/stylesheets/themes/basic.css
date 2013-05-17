@@ -1,4 +1,47 @@
-.slide.past,
-.slide.future {
-  display: none;
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+html {
+  height: 100%;
+}
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  color: #aaa;
+  background-color: #111;
+  font-size: 14pt;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 0.5em 0;
+}
+.presentation {
+  width: 100%;
+  height: 100%;
+}
+.slides {
+  width: 800px;
+  height: 500px;
+  position: relative;
+}
+.slides .slide {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2em;
+  background-color: #222;
+  border-radius: 0.5em;
+  overflow: hidden;
+  transition: opacity 0.5s;
+  position: absolute;
+}
+.slides .slide.past,
+.slides .slide.future {
+  opacity: 0;
 }

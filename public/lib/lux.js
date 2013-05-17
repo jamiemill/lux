@@ -1,8 +1,9 @@
 define([
     'jquery',
     'lib/slideshow',
-    'lib/keyboard-controller'
-], function($, Slideshow, KeyboardController) {
+    'lib/keyboard-controller',
+    'lib/autosizer'
+], function($, Slideshow, KeyboardController, Autosizer) {
 
     var Lux = {
         init: function() {
@@ -10,6 +11,9 @@ define([
                 baseEl: $('.presentation:first')
             });
             new KeyboardController({
+                slideshow: slideshow
+            });
+            new Autosizer({
                 slideshow: slideshow
             });
         }

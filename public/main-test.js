@@ -12,6 +12,10 @@ require(['isolate', 'sinon'], function(isolate, sinon) {
         'lib/keyboard-controller',
         function() { return sinon.spy(); }
     );
+    isolate.mapAsFactory(
+        'lib/autosizer',
+        function() { return sinon.spy(); }
+    );
 
     isolate.passthru([
         'jquery',
@@ -25,7 +29,8 @@ require(['isolate', 'sinon'], function(isolate, sinon) {
     require([
         'test/lux.spec',
         'test/slideshow.spec',
-        'test/keyboard-controller.spec'
+        'test/keyboard-controller.spec',
+        'test/autosizer.spec'
     ], function(){
         window.__karma__.start();
     });
