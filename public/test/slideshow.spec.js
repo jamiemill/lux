@@ -1,5 +1,5 @@
 define([
-    'jQuery',
+    'jquery',
     'chai',
     'lib/slideshow'
 ], function($, chai, Slideshow) {

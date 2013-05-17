@@ -1,4 +1,4 @@
-define(['jQuery', 'MicroEvent'], function($, MicroEvent) {
+define(['jquery', 'MicroEvent'], function($, MicroEvent) {
 
     /**
      * This class represents the actual slideshow.  It encapsulates the

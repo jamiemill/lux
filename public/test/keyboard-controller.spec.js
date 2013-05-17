@@ -1,5 +1,5 @@
 define([
-    'jQuery',
+    'jquery',
     'chai',
     'sinon',
     'lib/keyboard-controller'

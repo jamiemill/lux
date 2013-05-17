@@ -1,5 +1,5 @@
 require([
-    'jQuery',
+    'jquery',
     'lib/lux'
 ], function($, Lux) {
 

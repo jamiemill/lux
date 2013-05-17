@@ -1,5 +1,5 @@
 define([
-    'jQuery',
+    'jquery',
     'lib/slideshow',
     'lib/keyboard-controller'
 ], function($, Slideshow, KeyboardController) {

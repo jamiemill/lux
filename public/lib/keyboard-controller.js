@@ -1,4 +1,4 @@
-define(['jQuery'], function($) {
+define(['jquery'], function($) {
 
     /**
      * This class controls a slideshow with keyboard

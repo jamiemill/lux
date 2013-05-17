@@ -1,14 +1,15 @@
 requirejs.config({
     paths: {
-        jQuery: 'components/jquery-1.8.3.min',
+        jquery: 'components/jquery-1.8.3.min',
         MicroEvent: 'components/microevent',
         chai: 'components/chai',
         sinon: 'components/sinon-1.6.0',
         'sinon-chai': 'components/sinon-chai',
-        isolate: 'components/isolate'
+        isolate: 'components/isolate',
+        'chai-jquery': 'components/chai-jquery'
     },
     shim: {
-        jQuery: {
+        jquery: {
             exports: 'jQuery'
         },
         MicroEvent: {

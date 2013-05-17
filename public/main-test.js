@@ -14,7 +14,7 @@ require(['isolate', 'sinon'], function(isolate, sinon) {
     );
 
     isolate.passthru([
-        'jQuery',
+        'jquery',
         'MicroEvent',
         'chai',
         'sinon',
