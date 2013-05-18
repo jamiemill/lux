@@ -38,10 +38,9 @@ h4 {
   background-color: #222;
   border-radius: 0.5em;
   overflow: hidden;
-  transition: opacity 0.5s;
   position: absolute;
 }
 .slides .slide.past,
 .slides .slide.future {
-  opacity: 0;
+  display: none;
 }
