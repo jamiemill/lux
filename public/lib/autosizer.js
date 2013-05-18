@@ -4,6 +4,10 @@ define(['jquery'], function($) {
         this._slideshow = options.slideshow;
         this.$boundary = this._slideshow._$baseEl;
         this._sizeNow();
+        var self = this;
+        $(window).bind('resize.lux-autosizer', function() {
+            self._sizeNow();
+        });
     };
 
     $.extend(Autosizer.prototype, {

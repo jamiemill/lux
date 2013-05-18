@@ -76,6 +76,27 @@ define([
 
         });
 
+        describe('when window resizes', function() {
+            beforeEach(function() {
+                $baseEl = $('<div><div class="slides"></div></div>').css({width: 400, height: 800});
+                fakeSlideshow = {
+                    _$baseEl: $baseEl
+                };
+                autosizer = new Autosizer({
+                    slideshow: fakeSlideshow
+                });
+                $baseEl.css({width: 400, height: 200});
+                $(window).trigger('resize');
+            });
+
+            it('should fit the new size', function() {
+                var expectedScale = 'scale(0.4)';
+                var expectedTranslate = 'translate(100px, 0px)';
+                var expectedTransform = [expectedScale, expectedTranslate].join(' ');
+                expect($baseEl.find('.slides')).to.have.css('transform', expectedTransform);
+            });
+        });
+
     });
 
 });
