@@ -9,8 +9,9 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 'lib/**/*.js',
+                'test/**/*.js',
                 'public/lib/**/*.js',
-                'test/**/*.js'
+                'public/test/**/*.js'
             ]
         },
         cafemocha: {
