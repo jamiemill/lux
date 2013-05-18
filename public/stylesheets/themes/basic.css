@@ -7,7 +7,7 @@ body {
   font-weight: 400;
   color: #aaa;
   background-color: #111;
-  font-size: 14pt;
+  font-size: 12pt;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -17,9 +17,27 @@ h2,
 h3,
 h4 {
   font-weight: 900;
-  color: #fff;
+  color: #a0c42e;
   text-transform: uppercase;
   margin: 0 0 0.5em 0;
+}
+h1 {
+  font-size: 3em;
+}
+a {
+  color: #a0c42e;
+}
+a:visited {
+  color: #a0c42e;
+}
+a:active {
+  color: #c7df79;
+}
+pre,
+code {
+  background-color: #303030;
+  padding: 0.15em 0.25em;
+  border-radius: 0.25em;
 }
 .presentation {
   width: 100%;
@@ -29,6 +47,8 @@ h4 {
   width: 800px;
   height: 500px;
   position: relative;
+  box-sizing: border-box;
+  padding: 1.5em;
 }
 .slides .slide {
   width: 100%;
@@ -38,7 +58,6 @@ h4 {
   background-color: #222;
   border-radius: 0.5em;
   overflow: hidden;
-  position: absolute;
 }
 .slides .slide.past,
 .slides .slide.future {

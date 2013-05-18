@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,900);
 
+@lime: #A0C42E;
+
 html {
     height: 100%;
 }
@@ -9,7 +11,7 @@ body {
     font-weight: 400;
     color: #aaa;
     background-color: #111;
-    font-size: 14pt;
+    font-size: 12pt;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -17,9 +19,29 @@ body {
 
 h1, h2, h3, h4 {
     font-weight: 900;
-    color: #fff;
+    color: @lime;
     text-transform: uppercase;
     margin: 0 0 0.5em 0;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+a {
+    color: @lime;
+    &:visited {
+        color: @lime;
+    }
+    &:active {
+        color: lighten(@lime, 20%);
+    }
+}
+
+pre, code {
+    background-color: #303030;
+    padding: 0.15em 0.25em;
+    border-radius: 0.25em;
 }
 
 .presentation {
@@ -34,6 +56,8 @@ h1, h2, h3, h4 {
     width: 800px;
     height: 500px;
     position: relative;
+    box-sizing: border-box;
+    padding: 1.5em;
 
     .slide {
         width: 100%;
@@ -44,8 +68,6 @@ h1, h2, h3, h4 {
         background-color: #222;
         border-radius: 0.5em;
         overflow: hidden;
-
-        position: absolute;
 
         &.past,
         &.future {
