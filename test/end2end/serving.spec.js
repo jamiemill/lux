@@ -29,12 +29,12 @@ describe('Serving a presentation', function() {
 
         describe('When I visit in a browser', function() {
 
-            var proxy, page;
+            var phantom, page;
 
             before(function(done) {
                 this.timeout(10000);
                 phantomProxy.create({}, function(p) {
-                    proxy = p;
+                    phantom = p;
                     page = p.page;
                     page.open('http://localhost:3000', function() {
                         done();
@@ -43,7 +43,7 @@ describe('Serving a presentation', function() {
             });
 
             after(function(done) {
-                proxy.end(function() { done(); });
+                phantom.end(function() { done(); });
             });
 
             it('Then the first slide text should be present', function(done) {
