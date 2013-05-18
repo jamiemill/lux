@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,900);
 
 @lime: #A0C42E;
+@pink: #CE106B;
+@cyan: #06C2CA;
 
 html {
     height: 100%;
@@ -19,7 +21,7 @@ body {
 
 h1, h2, h3, h4 {
     font-weight: 900;
-    color: @lime;
+    color: @pink;
     text-transform: uppercase;
     margin: 0 0 0.5em 0;
 }
@@ -28,13 +30,17 @@ h1 {
     font-size: 3em;
 }
 
+h2 {
+    font-size: 2em;
+}
+
 a {
     color: @lime;
     &:visited {
         color: @lime;
     }
     &:active {
-        color: lighten(@lime, 20%);
+        color: @lime;
     }
 }
 

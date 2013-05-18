@@ -17,12 +17,15 @@ h2,
 h3,
 h4 {
   font-weight: 900;
-  color: #a0c42e;
+  color: #ce106b;
   text-transform: uppercase;
   margin: 0 0 0.5em 0;
 }
 h1 {
   font-size: 3em;
+}
+h2 {
+  font-size: 2em;
 }
 a {
   color: #a0c42e;
@@ -31,7 +34,7 @@ a:visited {
   color: #a0c42e;
 }
 a:active {
-  color: #c7df79;
+  color: #a0c42e;
 }
 pre,
 code {
