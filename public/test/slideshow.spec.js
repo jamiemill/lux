@@ -21,14 +21,6 @@ define([
                 return $htmlFixture.find(selector).map(function(i, el) {
                     return $(el).text();
                 }).get().join(', ');
-            },
-            check = function(done, f) {
-                try {
-                    f();
-                    done();
-                } catch(e) {
-                    done(e);
-                }
             };
 
         beforeEach(function() {
@@ -51,17 +43,6 @@ define([
                 expect(getTexts('.current')).to.equal('Slide 0');
                 expect(getTexts('.past')).to.equal('');
                 expect(getTexts('.future')).to.equal('Slide 1, Slide 2, Slide 3');
-            });
-
-            /* TODO: can't get this to work */
-
-            it.skip('enables transitions on the next tick', function(done) {
-                expect($htmlFixture).not.to.have.Class('enable-transitions');
-                setTimeout(function() {
-                    check(done, function() {
-                        expect($htmlFixture).to.have.Class('enable-transitions');
-                    });
-                }, 1000);
             });
 
         });
