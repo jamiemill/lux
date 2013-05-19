@@ -1,6 +1,4 @@
-var phantomProxy = require('phantom-proxy'),
-    spawn = require('child_process').spawn,
-    chai = require('chai'),
+var chai = require('chai'),
     expect = chai.expect,
     support = require('../support');
 
@@ -8,46 +6,14 @@ describe('Basic operation', function() {
 
     describe('Given I have a presentation running', function() {
 
-        var child;
-
-        before(function(done) {
-            var command = support.ROOT + 'bin/lux';
-            child = spawn(command, ['start'], {
-                cwd: support.TEST + 'fixtures/presentations/valid',
-                stdio: ['pipe', 'pipe', process.stderr]
-            });
-            child.stdout.on('data', function(data) {
-                if(/Presentation running/.test(data)) {
-                    done();
-                }
-            });
-        });
-
-        after(function() {
-            child.kill();
-        });
+        support.withLuxRunning();
 
         describe('When I visit in a browser', function() {
 
-            var phantom, page;
-
-            before(function(done) {
-                this.timeout(10000);
-                phantomProxy.create({}, function(p) {
-                    phantom = p;
-                    page = p.page;
-                    page.open('http://localhost:3000', function() {
-                        done();
-                    });
-                });
-            });
-
-            after(function(done) {
-                phantom.end(function() { done(); });
-            });
+            var pageWrapper = support.withPresentationLoaded();
 
             it('Then the first slide text should be present', function(done) {
-                page.evaluate(
+                pageWrapper.page.evaluate(
                     function() {
                         return window.$('h1:visible').text();
                     },
@@ -60,7 +26,7 @@ describe('Basic operation', function() {
             });
 
             it('And the first slide should be shown', function(done) {
-                page.evaluate(
+                pageWrapper.page.evaluate(
                     function() {
                         return window.$('.slide:nth-child(1)').is(':visible');
                     },
@@ -73,7 +39,7 @@ describe('Basic operation', function() {
             });
 
             it('And the second slide should be hidden', function(done) {
-                page.evaluate(
+                pageWrapper.page.evaluate(
                     function() {
                         return window.$('.slide:nth-child(2)').is(':visible');
                     },
@@ -89,13 +55,13 @@ describe('Basic operation', function() {
 
                 before(function(done) {
                     var SPACE = 32;
-                    page.sendEvent({event: 'keypress', keys: SPACE}, function() {
+                    pageWrapper.page.sendEvent({event: 'keypress', keys: SPACE}, function() {
                         done();
                     });
                 });
 
                 it('Then the second slide is shown', function(done) {
-                    page.evaluate(
+                    pageWrapper.page.evaluate(
                         function() {
                             return window.$('.slide:nth-child(2)').is(':visible');
                         },
@@ -108,7 +74,7 @@ describe('Basic operation', function() {
                 });
 
                 it('And the first is hidden', function(done) {
-                    page.evaluate(
+                    pageWrapper.page.evaluate(
                         function() {
                             return window.$('.slide:nth-child(1)').is(':visible');
                         },
