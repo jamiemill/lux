@@ -21,7 +21,7 @@ describe('Resizing', function() {
                     }, function() { done(); });
                 });
 
-                it('should scale the slides', function(done) {
+                it('Then it should scale the slides', function(done) {
                     pageWrapper.page.evaluate(
                         function() {
                             return window.$('.presentation').width();
@@ -33,6 +33,7 @@ describe('Resizing', function() {
                         }
                     );
                 });
+
             });
 
         });
