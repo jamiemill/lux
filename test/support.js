@@ -15,9 +15,10 @@ module.exports = {
 };
 
 /**
- * This is for wrapping a block containing an assertion in a safety
- * net that catches the failure and hands it back to the mocha
- * asyncronous `done` callback, instead of letting it go uncaught.
+ * This factors out the small amount of logic necessary for ensuring
+ * done() is always called in an asyncronous test, even if it fails.
+ * Otherwise an assertion error will be thrown and execution would return
+ * before your call to done() is reached.
  */
 
 function check(done, f) {
