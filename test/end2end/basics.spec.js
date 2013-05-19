@@ -4,7 +4,7 @@ var phantomProxy = require('phantom-proxy'),
     expect = chai.expect,
     support = require('../support');
 
-describe('Serving a presentation', function() {
+describe('Basic operation', function() {
 
     describe('Given I have a presentation running', function() {
 
