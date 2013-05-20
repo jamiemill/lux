@@ -24,11 +24,11 @@ describe('Resizing', function() {
                 it('Then it should scale the slides', function(done) {
                     pageWrapper.page.evaluate(
                         function() {
-                            return window.$('.presentation').width();
+                            return window.$('.slides').css('transform');
                         },
-                        function(width) {
+                        function(transform) {
                             support.check(done, function() {
-                                expect(width).to.equal('400');
+                                expect(transform).to.equal('matrix(0.5, 0, 0, 0.5, 0, 75)');
                             });
                         }
                     );
