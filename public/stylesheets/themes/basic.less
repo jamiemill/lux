@@ -4,6 +4,14 @@
 @pink: #CE106B;
 @cyan: #06C2CA;
 
+.clearfix() {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+
 html {
     height: 100%;
 }
@@ -22,7 +30,6 @@ body {
 h1, h2, h3, h4 {
     font-weight: 900;
     color: @pink;
-    text-transform: uppercase;
     margin: 0 0 0.5em 0;
 }
 
@@ -47,7 +54,7 @@ a {
 pre, code {
     background-color: #303030;
     padding: 0.15em 0.25em;
-    border-radius: 0.25em;
+    border-radius: 0.15em;
 }
 
 .presentation {
@@ -72,7 +79,7 @@ pre, code {
         padding: 2em;
 
         background-color: #222;
-        border-radius: 0.5em;
+        border-radius: 0.2em;
         overflow: hidden;
 
         &.past,
@@ -83,3 +90,11 @@ pre, code {
 
 }
 
+.row {
+    .clearfix();
+    .col.half {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+    }
+}

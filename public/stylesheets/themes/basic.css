@@ -18,7 +18,6 @@ h3,
 h4 {
   font-weight: 900;
   color: #ce106b;
-  text-transform: uppercase;
   margin: 0 0 0.5em 0;
 }
 h1 {
@@ -40,7 +39,7 @@ pre,
 code {
   background-color: #303030;
   padding: 0.15em 0.25em;
-  border-radius: 0.25em;
+  border-radius: 0.15em;
 }
 .presentation {
   width: 100%;
@@ -59,10 +58,20 @@ code {
   box-sizing: border-box;
   padding: 2em;
   background-color: #222;
-  border-radius: 0.5em;
+  border-radius: 0.2em;
   overflow: hidden;
 }
 .slides .slide.past,
 .slides .slide.future {
   display: none;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row .col.half {
+  float: left;
+  width: 45%;
+  margin-right: 5%;
 }
