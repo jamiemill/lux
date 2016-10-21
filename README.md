@@ -43,7 +43,7 @@ WARNING: this overwrites files in the current directory.
 
 ### Serve the presentation
 
-    lux
+    lux start
 
 then visit `http://<your computer>:3000`
 
