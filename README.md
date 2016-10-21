@@ -4,19 +4,16 @@ An HTML5 presentation framework, with the goals:
 
 - simplicity
 - good looks
-- syntax highlighting
+- export to standalone html/js
+
+- syntax highlighting (not yet implemented)
 - remote control (not yet implemented)
-- export to standalone html/js (not yet implemented)
+- Local control from a popup window on another screen (not yet implemented)
+- touch control on mobile (not yet implmented)
 
 ## Demo & Docs
 
 <http://jamiemill.github.com/lux/>
-
-## Features
-
-- Remote control over a network
-- Local control from a popup window on another screen
-- Local control by keyboard arrows, spacebar, touch swiping, or dragging with the mouse
 
 ## Requirements
 

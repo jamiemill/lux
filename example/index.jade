@@ -41,40 +41,40 @@
     pre.ugly
       | $ lux
       | ==> Presentation running on http://<your computer>:3000
-
-  .slide
-    h2 Remote Control
-    p Visit <code>/master</code> on another device to remote control the presentation.
+  //
+    .slide
+      h2 Remote Control
+      p Visit <code>/master</code> on another device to remote control the presentation.
 
   .slide
     h2 Static HTML Export
     p
       | Export static HTML with <code>lux export</code> and you get a fully-featured
       | presentation in HTML format, but without remote control abilities.
+  //
+    .slide
+      h2 Built-in syntax highlighting
+      p
+        |All <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks are highlighted with
+        | <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">Google Prettifier</a>.
+      .row
+        .col.half
+          p Example:
+          pre.ugly
+            | pre
+            |   | var foo = 'bar';
+        .col.half
+          p Becomes:
+          pre
+            | var foo = 'bar';
+      p Disable highlighing by adding class <code>.ugly</code>.
 
-  .slide
-    h2 Built-in syntax highlighting
-    p
-      |All <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks are highlighted with
-      | <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">Google Prettifier</a>.
-    .row
-      .col.half
-        p Example:
-        pre.ugly
-          | pre
-          |   | var foo = 'bar';
-      .col.half
-        p Becomes:
-        pre
-          | var foo = 'bar';
-    p Disable highlighing by adding class <code>.ugly</code>.
-
-  .slide
-    h2 URL integration
-    p Slides are bookmarkable and the browser's 'back' button works:
-    p e.g. to go to slide three:
-    pre.ugly
-      | /#slide=3
+    .slide
+      h2 URL integration
+      p Slides are bookmarkable and the browser's 'back' button works:
+      p e.g. to go to slide three:
+      pre.ugly
+        | /#slide=3
 
   .slide
     h2 Make columns
