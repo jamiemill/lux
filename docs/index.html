@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lux</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="components/require.js"></script>
+<script src="requirejs-config.js"></script>
+<script src="main.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/themes/basic.css"/>
+  </head>
+  <body>
+    <div class="presentation">
+<div class="slides">
+  <div class="slide">
+    <h1>Lux</h1>
+    <div class="row">
+      <div class="col half">
+        <p>Write presentations in Jade:</p>
+        <pre class="ugly">.slide
+  h1 My Presentation
+  p This is slide one.
+ 
+.slide
+  h2 Slide two</pre>
+      </div>
+      <div class="col half">
+        <p>Share over network like:</p>
+        <pre class="lang-bsh">$ lux start</pre>
+        <p>Or export to static HTML:</p>
+        <pre class="lang-bsh">$ lux export</pre>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Press <code>space</code> or <code>→</code> for next slide.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <h2>Install</h2>
+    <pre class="ugly">npm install -g lux</pre>
+  </div>
+  <div class="slide">
+    <h2>Getting Started</h2>
+    <p>Generate a skeleton presentation</p>
+    <pre class="ugly">$ mkdir mypres &amp;&amp; cd mypres
+$ lux generate</pre>
+    <p>Then edit the index.jade file to add your content.</p>
+  </div>
+  <div class="slide">
+    <h2>Serving presentation over the network</h2>
+    <pre class="ugly">$ lux start
+==&gt; Presentation running on http://&lt;your computer&gt;:3000</pre>
+  </div><!--
+  <div class="slide">
+    <h2>Remote Control</h2>
+    <p>Visit <code>/master</code> on another device to remote control the presentation.</p>
+  </div>-->
+  <div class="slide">
+    <h2>Static HTML Export</h2>
+    <p>
+      Export static HTML with <code>lux export</code> and you get a fully-featured
+      presentation in HTML format, but without remote control abilities.
+    </p>
+  </div><!--
+  <div class="slide">
+    <h2>Built-in syntax highlighting</h2>
+    <p>
+      All <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> blocks are highlighted with
+      <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">Google Prettifier</a>.
+    </p>
+    <div class="row">
+      <div class="col half">
+        <p>Example:</p>
+        <pre class="ugly">pre
+  | var foo = 'bar';</pre>
+      </div>
+      <div class="col half">
+        <p>Becomes:</p>
+        <pre>var foo = 'bar';</pre>
+      </div>
+    </div>
+    <p>Disable highlighing by adding class <code>.ugly</code>.</p>
+  </div>
+  <div class="slide">
+    <h2>URL integration</h2>
+    <p>Slides are bookmarkable and the browser's 'back' button works:</p>
+    <p>e.g. to go to slide three:</p>
+    <pre class="ugly">/#slide=3</pre>
+  </div>-->
+  <div class="slide">
+    <h2>Make columns</h2>
+    <p>Split a slide in two like this:</p>
+    <pre class="ugly">.row
+  .col.half
+    p Left content here
+  .col.half
+    p Right content here</pre>
+  </div>
+  <div class="slide">
+    <h2>Contribute!</h2>
+    <p>Please contribute at <a href="http://github.com/jamiemill/lux">http://github.com/jamiemill/lux</a>.</p>
+  </div>
+</div></div>
+  </body>
+</html>

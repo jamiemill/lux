@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+html {
+  height: 100%;
+}
+body {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  color: #aaa;
+  background-color: #111;
+  font-size: 12pt;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 1.6;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
+  color: #ce106b;
+  margin: 0 0 0.5em 0;
+}
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+}
+a {
+  color: #a0c42e;
+}
+a:visited {
+  color: #a0c42e;
+}
+a:active {
+  color: #a0c42e;
+}
+pre,
+code {
+  background-color: #303030;
+  padding: 0.15em 0.25em;
+  border-radius: 0.15em;
+}
+.presentation {
+  width: 100%;
+  height: 100%;
+}
+.slides {
+  width: 800px;
+  height: 500px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 1.5em;
+}
+.slides .slide {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-bottom: 0.2em solid #a0c42e;
+  overflow: hidden;
+}
+.slides .slide.past,
+.slides .slide.future {
+  display: none;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row .col.half {
+  float: left;
+  width: 45%;
+  margin-right: 5%;
+}

@@ -1,0 +1,99 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+
+@lime: #A0C42E;
+@pink: #CE106B;
+@cyan: #06C2CA;
+
+.clearfix() {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    color: #aaa;
+    background-color: #111;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 900;
+    color: @pink;
+    margin: 0 0 0.5em 0;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+a {
+    color: @lime;
+    &:visited {
+        color: @lime;
+    }
+    &:active {
+        color: @lime;
+    }
+}
+
+pre, code {
+    background-color: #303030;
+    padding: 0.15em 0.25em;
+    border-radius: 0.15em;
+}
+
+.presentation {
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+
+    // nominal size to set proportion and space.
+    // this element will get scaled via CSS transform to fit its container.
+    width: 800px;
+    height: 500px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 1.5em;
+
+    .slide {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        border-bottom: 0.2em solid @lime;
+        overflow: hidden;
+
+        &.past,
+        &.future {
+            display: none;
+        }
+    }
+
+}
+
+.row {
+    .clearfix();
+    .col.half {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+    }
+}
