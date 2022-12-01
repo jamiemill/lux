@@ -13,7 +13,7 @@ An HTML5 presentation framework, with the goals:
 
 ## Demo & Docs
 
-<http://jamiemill.github.com/lux/>
+<http://jamiemill.github.io/lux/>
 
 ## Requirements
 
